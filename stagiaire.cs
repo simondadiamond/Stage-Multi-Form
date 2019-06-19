@@ -33,6 +33,11 @@ namespace GestionStages
             else {
                 this.Text = "Modifier un stagiaire";
                 m_stagiaire = p_stagiaire;
+
+                txt_id.Text = p_stagiaire.m_id.ToString();
+                txt_nom.Text = p_stagiaire.m_nom;
+                txt_telephone.Text = p_stagiaire.m_telephone;
+                txt_courriel.Text = p_stagiaire.m_courriel;
             }
         }
 
@@ -69,15 +74,12 @@ namespace GestionStages
                 e.Cancel = true;
                 this.gestionnaireErreurs.SetError(this.txt_id, "Votre ID doit être un nombre");
             }
-            else if (m_regex_numero.IsMatch(txt_id.Text)) // si la case contient un nombre
+            else if ( m_regex_numero.IsMatch(txt_id.Text) ) // si la case contient un nombre
             {
+                classeStagiaire stagiaireId = trouverStagiaireParId(txt_id.Text);
 
-
-                //*****  A CODER ****** authorizer ID courrant si modification
-
-
-
-                if (estIdUtilise(txt_id.Text)) // si le numero est deja utilisé
+                // si le numero est deja utilisé et que l'on ne le modifie pas
+                if ( stagiaireId != null && stagiaireId != m_stagiaire) 
                 {
                     e.Cancel = true;
                     this.gestionnaireErreurs.SetError(this.txt_id, "Votre ID est déja utilisé");
@@ -101,7 +103,19 @@ namespace GestionStages
             }
             return estUtilise;
         }
+        private classeStagiaire trouverStagiaireParId(string p_id)
+        {
+            classeStagiaire resultat = null;
 
+            foreach (classeStagiaire stagiaire in m_stagiaires.Items)
+            {
+                if ( Convert.ToInt32(p_id) == stagiaire.m_id )
+                {
+                    resultat = stagiaire;
+                }
+            }
+            return resultat;
+        }
 
 
         private void txt_nom_Validating(object sender, CancelEventArgs e)

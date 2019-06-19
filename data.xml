@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<listeStagiaire>
+	<stagiaire id="1" nom="patate" telephone="123-123-1234" courriel="patate@patate.com" />
+</listeStagiaire>

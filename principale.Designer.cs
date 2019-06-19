@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.grp_rechercher = new System.Windows.Forms.GroupBox();
-            this.lbl_recherche = new System.Windows.Forms.Label();
-            this.btn_recherche = new System.Windows.Forms.Button();
             this.txt_recherche = new System.Windows.Forms.TextBox();
             this.grp_gestionFichier = new System.Windows.Forms.GroupBox();
             this.btn_sauvegarder = new System.Windows.Forms.Button();
@@ -49,6 +47,8 @@
             this.grp_affichage = new System.Windows.Forms.GroupBox();
             this.txt_affichage = new System.Windows.Forms.TextBox();
             this.gestionnaireErreurs = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dlg_sauvergarder = new System.Windows.Forms.OpenFileDialog();
+            this.dlg_charger = new System.Windows.Forms.OpenFileDialog();
             this.grp_rechercher.SuspendLayout();
             this.grp_gestionFichier.SuspendLayout();
             this.grp_stagiaires.SuspendLayout();
@@ -60,8 +60,6 @@
             // 
             // grp_rechercher
             // 
-            this.grp_rechercher.Controls.Add(this.lbl_recherche);
-            this.grp_rechercher.Controls.Add(this.btn_recherche);
             this.grp_rechercher.Controls.Add(this.txt_recherche);
             this.grp_rechercher.Location = new System.Drawing.Point(223, 12);
             this.grp_rechercher.Name = "grp_rechercher";
@@ -70,31 +68,11 @@
             this.grp_rechercher.TabStop = false;
             this.grp_rechercher.Text = "Rechercher";
             // 
-            // lbl_recherche
-            // 
-            this.lbl_recherche.AutoSize = true;
-            this.lbl_recherche.ForeColor = System.Drawing.Color.Red;
-            this.lbl_recherche.Location = new System.Drawing.Point(7, 42);
-            this.lbl_recherche.Name = "lbl_recherche";
-            this.lbl_recherche.Size = new System.Drawing.Size(129, 13);
-            this.lbl_recherche.TabIndex = 2;
-            this.lbl_recherche.Text = "**Aucun stagiaire trouvé**";
-            // 
-            // btn_recherche
-            // 
-            this.btn_recherche.Location = new System.Drawing.Point(372, 14);
-            this.btn_recherche.Name = "btn_recherche";
-            this.btn_recherche.Size = new System.Drawing.Size(38, 30);
-            this.btn_recherche.TabIndex = 1;
-            this.btn_recherche.Text = "&GO !";
-            this.btn_recherche.UseVisualStyleBackColor = true;
-            this.btn_recherche.Click += new System.EventHandler(this.Btn_recherche_Click);
-            // 
             // txt_recherche
             // 
-            this.txt_recherche.Location = new System.Drawing.Point(10, 19);
+            this.txt_recherche.Location = new System.Drawing.Point(10, 29);
             this.txt_recherche.Name = "txt_recherche";
-            this.txt_recherche.Size = new System.Drawing.Size(356, 20);
+            this.txt_recherche.Size = new System.Drawing.Size(399, 20);
             this.txt_recherche.TabIndex = 0;
             this.txt_recherche.TextChanged += new System.EventHandler(this.txt_recherche_TextChanged);
             // 
@@ -118,6 +96,7 @@
             this.btn_sauvegarder.TabIndex = 1;
             this.btn_sauvegarder.Text = "&Sauvegarder";
             this.btn_sauvegarder.UseVisualStyleBackColor = true;
+            this.btn_sauvegarder.Click += new System.EventHandler(this.btn_sauvegarder_Click);
             // 
             // btn_charger
             // 
@@ -130,7 +109,7 @@
             // 
             // btn_quitter
             // 
-            this.btn_quitter.Location = new System.Drawing.Point(471, 348);
+            this.btn_quitter.Location = new System.Drawing.Point(489, 354);
             this.btn_quitter.Name = "btn_quitter";
             this.btn_quitter.Size = new System.Drawing.Size(96, 34);
             this.btn_quitter.TabIndex = 2;
@@ -183,7 +162,7 @@
             this.grp_gestion.Controls.Add(this.btn_modifier);
             this.grp_gestion.Location = new System.Drawing.Point(12, 338);
             this.grp_gestion.Name = "grp_gestion";
-            this.grp_gestion.Size = new System.Drawing.Size(371, 51);
+            this.grp_gestion.Size = new System.Drawing.Size(412, 51);
             this.grp_gestion.TabIndex = 5;
             this.grp_gestion.TabStop = false;
             this.grp_gestion.Text = "Gestion";
@@ -192,9 +171,9 @@
             // 
             this.btn_supprimer.Location = new System.Drawing.Point(289, 16);
             this.btn_supprimer.Name = "btn_supprimer";
-            this.btn_supprimer.Size = new System.Drawing.Size(75, 23);
+            this.btn_supprimer.Size = new System.Drawing.Size(117, 23);
             this.btn_supprimer.TabIndex = 3;
-            this.btn_supprimer.Text = "Supprimer";
+            this.btn_supprimer.Text = "Supprimer stage";
             this.btn_supprimer.UseVisualStyleBackColor = true;
             this.btn_supprimer.Click += new System.EventHandler(this.btn_supprimer_Click);
             // 
@@ -252,6 +231,19 @@
             // 
             this.gestionnaireErreurs.ContainerControl = this;
             // 
+            // dlg_sauvergarder
+            // 
+            this.dlg_sauvergarder.CheckFileExists = false;
+            this.dlg_sauvergarder.DefaultExt = "xml";
+            this.dlg_sauvergarder.FileName = "data.xml";
+            this.dlg_sauvergarder.Filter = "Fichiers XML|*.xml";
+            // 
+            // dlg_charger
+            // 
+            this.dlg_charger.DefaultExt = "xml";
+            this.dlg_charger.FileName = "data.xml";
+            this.dlg_charger.Filter = "Fichiers XML|*.xml";
+            // 
             // principale
             // 
             this.AcceptButton = this.btn_quitter;
@@ -286,7 +278,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grp_rechercher;
-        private System.Windows.Forms.Button btn_recherche;
         private System.Windows.Forms.TextBox txt_recherche;
         private System.Windows.Forms.GroupBox grp_gestionFichier;
         private System.Windows.Forms.Button btn_sauvegarder;
@@ -303,8 +294,9 @@
         private System.Windows.Forms.Button btn_stage;
         private System.Windows.Forms.GroupBox grp_affichage;
         private System.Windows.Forms.TextBox txt_affichage;
-        private System.Windows.Forms.Label lbl_recherche;
         private System.Windows.Forms.ErrorProvider gestionnaireErreurs;
+        private System.Windows.Forms.OpenFileDialog dlg_sauvergarder;
+        private System.Windows.Forms.OpenFileDialog dlg_charger;
     }
 }
 

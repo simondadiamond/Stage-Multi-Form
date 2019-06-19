@@ -23,7 +23,10 @@ namespace GestionStages
             m_nomSuperviseur = p_nomSuperviseur;
             m_Commentaire = p_commentaire;
         }
-
+        public override string ToString()
+        {
+            return m_nomStage;
+        }
 
 
     }

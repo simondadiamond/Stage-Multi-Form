@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace GestionStages
 {
@@ -16,8 +18,21 @@ namespace GestionStages
         private ListBox m_stagiairesOriginal { get; set; }
         private bool m_enRecherche { get; set; }
 
+        private static string XML_ELM_RACINE = "listeStagiaire";
+        private static string XML_ELM_STAGIAIRE = "stagiaire";
+        private static string XML_ELM_STAGE = "stage";
 
-    public principale()
+        private static string XML_ATTR_ID = "id";
+        private static string XML_ATTR_NOM = "nom";
+        private static string XML_ATTR_NOMSTAGE = "nomStage";
+        private static string XML_ATTR_TELEPHONE = "telephone";
+        private static string XML_ATTR_COURRIEL = "courriel";
+        private static string XML_ATTR_DATEDEBUT = "dateDebut";
+        private static string XML_ATTR_DATEFIN = "dateFin";
+        private static string XML_ATTR_NOMSUPERVISEUR = "nomSuperviseur";
+        private static string XML_ATTR_COMMENTAIRE = "commentaire";
+
+        public principale()
         {
             InitializeComponent();
             m_stageVide = lst_stages;
@@ -35,7 +50,12 @@ namespace GestionStages
 
         private void btn_supprimer_Click(object sender, EventArgs e)
         {
+            classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
 
+            if (stageSelectionne != null) {
+                    int index = lst_stages.SelectedIndex;
+                    lst_stages.Items.RemoveAt(index);
+            }
         }
 
         private void btn_modifier_Click(object sender, EventArgs e)
@@ -90,7 +110,7 @@ namespace GestionStages
 
         private void principale_Load(object sender, EventArgs e)
         {
-            this.lbl_recherche.Text = "";
+           
         }
 
         private void lst_stagiaires_SelectedIndexChanged(object sender, EventArgs e){
@@ -214,5 +234,103 @@ namespace GestionStages
             }
             return trouve;
         }
+
+        private void btn_sauvegarder_Click(object sender, EventArgs e)
+        {
+            if ( this.lst_stagiaires.Items.Count > 0 ) { // si au moins 1 stagiaire
+                DialogResult resultat = this.dlg_sauvergarder.ShowDialog();
+
+                if ( resultat == DialogResult.OK ) {
+                    try {
+                        Sauvegarder(this.dlg_sauvergarder.FileName);
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(
+                              exception.Message, "Erreur",
+                              MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+            }
+            else {
+                MessageBox.Show(
+                    "Aucun stagiaire à sauvegarder", "Erreur",
+                    MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+        private void Sauvegarder( string p_nomFichier )
+        {
+            Debug.Assert( !string.IsNullOrEmpty(p_nomFichier) );
+            Debug.Assert( lst_stagiaires.Items != null );
+
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.IndentChars = "\t";
+            XmlWriter fichier = XmlWriter.Create( p_nomFichier, settings );
+
+            fichier.WriteStartDocument();
+
+            // <listeStagiaire>
+            fichier.WriteStartElement(XML_ELM_RACINE);
+
+
+            foreach ( classeStagiaire stagiaire in lst_stagiaires.Items )
+            {
+                // <stagiaire>
+                SauvegarderStagiaire(fichier, stagiaire);
+                // </stagiaire>
+            }
+
+            // </listeStagiaire>
+            fichier.WriteEndElement();
+
+            fichier.WriteEndDocument();
+            fichier.Close();
+
+            MessageBox.Show(
+                "L'opération c'est terminé avec succès !", "Succes",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void SauvegarderStagiaire( XmlWriter p_document, classeStagiaire p_stagiaire )
+        {
+            Debug.Assert( p_document != null  );
+            Debug.Assert( p_stagiaire != null );
+
+            // <stagiaire>
+            p_document.WriteStartElement( XML_ELM_STAGIAIRE );
+
+            p_document.WriteAttributeString( XML_ATTR_ID, p_stagiaire.m_id.ToString() );
+            p_document.WriteAttributeString( XML_ATTR_NOM, p_stagiaire.m_nom );
+            p_document.WriteAttributeString( XML_ATTR_TELEPHONE, p_stagiaire.m_telephone );
+            p_document.WriteAttributeString( XML_ATTR_COURRIEL, p_stagiaire.m_courriel );
+
+            foreach ( classeStage stage in p_stagiaire.m_stages.Items ) {
+                // <stage>
+                SauvegarderStage(p_document, stage);
+                // </stage>
+            }
+
+            // </stagiaire>
+            p_document.WriteEndElement();
+        }
+        private void SauvegarderStage( XmlWriter p_document, classeStage p_stage )
+        {
+            Debug.Assert( p_document != null );
+            Debug.Assert( p_stage != null    );
+
+            // <stage>
+            p_document.WriteStartElement(XML_ELM_STAGE);
+
+            p_document.WriteAttributeString( XML_ATTR_NOMSTAGE, p_stage.m_nomStage );
+            p_document.WriteAttributeString( XML_ATTR_DATEDEBUT, p_stage.m_dateDebut );
+            p_document.WriteAttributeString( XML_ATTR_DATEFIN, p_stage.m_dateFin );
+            p_document.WriteAttributeString( XML_ATTR_NOMSUPERVISEUR, p_stage.m_nomSuperviseur );
+            p_document.WriteAttributeString( XML_ATTR_COMMENTAIRE, p_stage.m_Commentaire );
+
+            // </stage>
+            p_document.WriteEndElement();
+        }
+
+
     }
 }
