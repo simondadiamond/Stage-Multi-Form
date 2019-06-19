@@ -62,9 +62,9 @@
             // 
             this.grp_rechercher.Controls.Add(this.txt_recherche);
             this.grp_rechercher.Location = new System.Drawing.Point(297, 15);
-            this.grp_rechercher.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grp_rechercher.Margin = new System.Windows.Forms.Padding(4);
             this.grp_rechercher.Name = "grp_rechercher";
-            this.grp_rechercher.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grp_rechercher.Padding = new System.Windows.Forms.Padding(4);
             this.grp_rechercher.Size = new System.Drawing.Size(555, 79);
             this.grp_rechercher.TabIndex = 0;
             this.grp_rechercher.TabStop = false;
@@ -73,7 +73,7 @@
             // txt_recherche
             // 
             this.txt_recherche.Location = new System.Drawing.Point(13, 36);
-            this.txt_recherche.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_recherche.Margin = new System.Windows.Forms.Padding(4);
             this.txt_recherche.Name = "txt_recherche";
             this.txt_recherche.Size = new System.Drawing.Size(531, 22);
             this.txt_recherche.TabIndex = 0;
@@ -84,9 +84,9 @@
             this.grp_gestionFichier.Controls.Add(this.btn_sauvegarder);
             this.grp_gestionFichier.Controls.Add(this.btn_charger);
             this.grp_gestionFichier.Location = new System.Drawing.Point(16, 15);
-            this.grp_gestionFichier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grp_gestionFichier.Margin = new System.Windows.Forms.Padding(4);
             this.grp_gestionFichier.Name = "grp_gestionFichier";
-            this.grp_gestionFichier.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grp_gestionFichier.Padding = new System.Windows.Forms.Padding(4);
             this.grp_gestionFichier.Size = new System.Drawing.Size(269, 79);
             this.grp_gestionFichier.TabIndex = 1;
             this.grp_gestionFichier.TabStop = false;
@@ -96,7 +96,7 @@
             // btn_sauvegarder
             // 
             this.btn_sauvegarder.Location = new System.Drawing.Point(148, 26);
-            this.btn_sauvegarder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_sauvegarder.Margin = new System.Windows.Forms.Padding(4);
             this.btn_sauvegarder.Name = "btn_sauvegarder";
             this.btn_sauvegarder.Size = new System.Drawing.Size(113, 42);
             this.btn_sauvegarder.TabIndex = 1;
@@ -107,7 +107,7 @@
             // btn_charger
             // 
             this.btn_charger.Location = new System.Drawing.Point(9, 26);
-            this.btn_charger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_charger.Margin = new System.Windows.Forms.Padding(4);
             this.btn_charger.Name = "btn_charger";
             this.btn_charger.Size = new System.Drawing.Size(131, 42);
             this.btn_charger.TabIndex = 0;
@@ -118,7 +118,7 @@
             // btn_quitter
             // 
             this.btn_quitter.Location = new System.Drawing.Point(652, 436);
-            this.btn_quitter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_quitter.Margin = new System.Windows.Forms.Padding(4);
             this.btn_quitter.Name = "btn_quitter";
             this.btn_quitter.Size = new System.Drawing.Size(128, 42);
             this.btn_quitter.TabIndex = 2;
@@ -130,9 +130,9 @@
             // 
             this.grp_stagiaires.Controls.Add(this.lst_stagiaires);
             this.grp_stagiaires.Location = new System.Drawing.Point(16, 117);
-            this.grp_stagiaires.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grp_stagiaires.Margin = new System.Windows.Forms.Padding(4);
             this.grp_stagiaires.Name = "grp_stagiaires";
-            this.grp_stagiaires.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grp_stagiaires.Padding = new System.Windows.Forms.Padding(4);
             this.grp_stagiaires.Size = new System.Drawing.Size(271, 292);
             this.grp_stagiaires.TabIndex = 3;
             this.grp_stagiaires.TabStop = false;
@@ -143,7 +143,7 @@
             this.lst_stagiaires.FormattingEnabled = true;
             this.lst_stagiaires.ItemHeight = 16;
             this.lst_stagiaires.Location = new System.Drawing.Point(9, 25);
-            this.lst_stagiaires.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lst_stagiaires.Margin = new System.Windows.Forms.Padding(4);
             this.lst_stagiaires.Name = "lst_stagiaires";
             this.lst_stagiaires.Size = new System.Drawing.Size(251, 260);
             this.lst_stagiaires.TabIndex = 0;
@@ -153,9 +153,9 @@
             // 
             this.grp_stages.Controls.Add(this.lst_stages);
             this.grp_stages.Location = new System.Drawing.Point(296, 117);
-            this.grp_stages.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grp_stages.Margin = new System.Windows.Forms.Padding(4);
             this.grp_stages.Name = "grp_stages";
-            this.grp_stages.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grp_stages.Padding = new System.Windows.Forms.Padding(4);
             this.grp_stages.Size = new System.Drawing.Size(269, 292);
             this.grp_stages.TabIndex = 4;
             this.grp_stages.TabStop = false;
@@ -166,7 +166,7 @@
             this.lst_stages.FormattingEnabled = true;
             this.lst_stages.ItemHeight = 16;
             this.lst_stages.Location = new System.Drawing.Point(9, 25);
-            this.lst_stages.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lst_stages.Margin = new System.Windows.Forms.Padding(4);
             this.lst_stages.Name = "lst_stages";
             this.lst_stages.Size = new System.Drawing.Size(251, 260);
             this.lst_stages.TabIndex = 0;
@@ -179,9 +179,9 @@
             this.grp_gestion.Controls.Add(this.btn_stage);
             this.grp_gestion.Controls.Add(this.btn_modifier);
             this.grp_gestion.Location = new System.Drawing.Point(16, 416);
-            this.grp_gestion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grp_gestion.Margin = new System.Windows.Forms.Padding(4);
             this.grp_gestion.Name = "grp_gestion";
-            this.grp_gestion.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grp_gestion.Padding = new System.Windows.Forms.Padding(4);
             this.grp_gestion.Size = new System.Drawing.Size(549, 63);
             this.grp_gestion.TabIndex = 5;
             this.grp_gestion.TabStop = false;
@@ -190,7 +190,7 @@
             // btn_supprimer
             // 
             this.btn_supprimer.Location = new System.Drawing.Point(385, 20);
-            this.btn_supprimer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_supprimer.Margin = new System.Windows.Forms.Padding(4);
             this.btn_supprimer.Name = "btn_supprimer";
             this.btn_supprimer.Size = new System.Drawing.Size(156, 28);
             this.btn_supprimer.TabIndex = 3;
@@ -201,7 +201,7 @@
             // btn_stagiaire
             // 
             this.btn_stagiaire.Location = new System.Drawing.Point(8, 20);
-            this.btn_stagiaire.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_stagiaire.Margin = new System.Windows.Forms.Padding(4);
             this.btn_stagiaire.Name = "btn_stagiaire";
             this.btn_stagiaire.Size = new System.Drawing.Size(121, 28);
             this.btn_stagiaire.TabIndex = 1;
@@ -212,7 +212,7 @@
             // btn_stage
             // 
             this.btn_stage.Location = new System.Drawing.Point(140, 20);
-            this.btn_stage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_stage.Margin = new System.Windows.Forms.Padding(4);
             this.btn_stage.Name = "btn_stage";
             this.btn_stage.Size = new System.Drawing.Size(123, 28);
             this.btn_stage.TabIndex = 0;
@@ -223,7 +223,7 @@
             // btn_modifier
             // 
             this.btn_modifier.Location = new System.Drawing.Point(277, 20);
-            this.btn_modifier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_modifier.Margin = new System.Windows.Forms.Padding(4);
             this.btn_modifier.Name = "btn_modifier";
             this.btn_modifier.Size = new System.Drawing.Size(100, 28);
             this.btn_modifier.TabIndex = 2;
@@ -235,9 +235,9 @@
             // 
             this.grp_affichage.Controls.Add(this.txt_affichage);
             this.grp_affichage.Location = new System.Drawing.Point(575, 117);
-            this.grp_affichage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grp_affichage.Margin = new System.Windows.Forms.Padding(4);
             this.grp_affichage.Name = "grp_affichage";
-            this.grp_affichage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grp_affichage.Padding = new System.Windows.Forms.Padding(4);
             this.grp_affichage.Size = new System.Drawing.Size(276, 292);
             this.grp_affichage.TabIndex = 6;
             this.grp_affichage.TabStop = false;
@@ -246,7 +246,7 @@
             // txt_affichage
             // 
             this.txt_affichage.Location = new System.Drawing.Point(9, 25);
-            this.txt_affichage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_affichage.Margin = new System.Windows.Forms.Padding(4);
             this.txt_affichage.Multiline = true;
             this.txt_affichage.Name = "txt_affichage";
             this.txt_affichage.ReadOnly = true;
@@ -284,7 +284,7 @@
             this.Controls.Add(this.btn_quitter);
             this.Controls.Add(this.grp_gestionFichier);
             this.Controls.Add(this.grp_rechercher);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "principale";

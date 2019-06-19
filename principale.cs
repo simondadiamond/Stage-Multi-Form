@@ -144,7 +144,7 @@ namespace GestionStages
         }
 
         private void lst_stagiaires_SelectedIndexChanged(object sender, EventArgs e){
-            lst_stages.ClearSelected();
+            
             classeStagiaire stagiaireSelectionne = (classeStagiaire)this.lst_stagiaires.SelectedItem;
             classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
 
@@ -161,25 +161,13 @@ namespace GestionStages
                                                 stagiaireSelectionne.m_nom,
                                                 stagiaireSelectionne.m_telephone,
                                                 stagiaireSelectionne.m_courriel);
+                lst_stages.ClearSelected();
                 txt_affichage.Text = sb.ToString();
-
-
-            if (stageSelectionne != null) {
-                string infoStage = "Titre:{0} \r\n    Date de début:{1} \r\n    Date de fin:{2} \r\n    Commentaires:{3}\r\n    Nom du superviseur:{4}";
-                sb.AppendFormat(infoStage,
-                                stageSelectionne.m_nomStage,
-                                stageSelectionne.m_dateDebut,
-                                stageSelectionne.m_dateFin,
-                                stageSelectionne.m_Commentaire,
-                                stageSelectionne.m_nomSuperviseur);
+                
             }
-            
-
+            else{
+                lst_stages = m_stageVide;
             }
-            //else{
-            //    lst_stages = m_stageVide;
-            //}
-
 
         }
 
@@ -508,10 +496,21 @@ namespace GestionStages
             return nouvelleListe;
         }
 
-
-
-
-
-
+        private void lst_stages_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
+            StringBuilder sb = new StringBuilder();
+            if (stageSelectionne != null)
+            {
+                string infoStage = "Titre:{0} \r\n    Date de début:{1} \r\n    Date de fin:{2} \r\n    Commentaires:{3}\r\n    Nom du superviseur:{4}";
+                sb.AppendFormat(infoStage,
+                                stageSelectionne.m_nomStage,
+                                stageSelectionne.m_dateDebut,
+                                stageSelectionne.m_dateFin,
+                                stageSelectionne.m_Commentaire,
+                                stageSelectionne.m_nomSuperviseur);
+            }
+            txt_affichage.Text = sb.ToString();
+        }
     }
 }
