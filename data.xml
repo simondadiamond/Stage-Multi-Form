@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <listeStagiaire>
-	<stagiaire id="1" nom="Pierre" telephone="418-123-1234" courriel="patate@patate.com" />
+	<stagiaire id="1" nom="Pierre" telephone="418-123-1234" courriel="patate@patate.com" >
+		<stage nomStage="patatooooo" dateDebut="2019-05-25" dateFin="2019-05-26" nomSuperviseur="aaa" commentaire="" />
+	</stagiaire>
 	<stagiaire id="2" nom="Jean" telephone="418-123-1234" courriel="patate@patate.com">
 		<stage nomStage="edsgfrs" dateDebut="2019-05-25" dateFin="2019-05-26" nomSuperviseur="" commentaire="" />
 	</stagiaire>

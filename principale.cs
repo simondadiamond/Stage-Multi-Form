@@ -445,6 +445,7 @@ namespace GestionStages
                 "L'opération c'est terminé avec succès !", "Succes",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
         public classeStagiaire chargerStagiaire( XmlReader p_doc )
         {
             // Aucun ReadStartElement()
@@ -455,14 +456,18 @@ namespace GestionStages
             string courriel = p_doc.GetAttribute( XML_ATTR_COURRIEL );
 
             classeStagiaire nouveau = new classeStagiaire( id, nom, telephone,
-                                                        courriel, new ListBox() );
+                                                           courriel, new ListBox() );
+            p_doc.ReadToDescendant("stage"); // La ligne manquante... en gros je crois que cetais parce que cetais a la première ligne ''ID`` et non stage qui etais la derniere....
 
-            // Lire sans savoir si on a terminé
-            while ( p_doc.IsStartElement(XML_ELM_STAGE) )
+            //Lire sans savoir si on a terminé
+            while (p_doc.IsStartElement(XML_ELM_STAGE))
             {
-                nouveau.m_stages.Items.Add( chargerStage(p_doc) );
+                nouveau.m_stages.Items.Add(chargerStage(p_doc));
             }
-            
+
+
+
+
             // Pour passer par-dessus </stagiaire>
             p_doc.Skip();
 
