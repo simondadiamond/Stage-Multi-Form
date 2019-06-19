@@ -119,6 +119,26 @@ namespace GestionStages
 
             if (stagiaireSelectionne != null) {
                 lst_stages = stagiaireSelectionne.m_stages;
+                StringBuilder sb = new StringBuilder();
+                string infoStagiaire = "Numéro d'employé:{0} \nNom:{1} \nNuméro de téléphone:{2} \nCouriel:{3}\n";
+                string infoStage = "Titre:{0} \n    Date de début:{1} \n    Date de fin:{2} \n    Commentaires:{3}\n    Nom du superviseur:{4}";
+
+                sb.AppendFormat(infoStagiaire,  stagiaireSelectionne.m_id.ToString(),
+                                                stagiaireSelectionne.m_nom,
+                                                stagiaireSelectionne.m_telephone,
+                                                stagiaireSelectionne.m_courriel);
+
+                foreach (classeStage stage in stagiaireSelectionne.m_stages.Items)
+                {
+                    sb.AppendFormat(infoStage,
+                                    stage.m_nomStage,
+                                    stage.m_dateDebut,
+                                    stage.m_dateFin,
+                                    stage.m_Commentaire,
+                                    stage.m_nomSuperviseur);
+                }
+                txt_affichage.Text = sb.ToString();
+
             }
             else{
                 lst_stages = m_stageVide;
