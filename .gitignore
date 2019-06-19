@@ -1,0 +1,10 @@
+
+\.vs/GestionStages/v16/\.suo
+
+\.vs/GestionStages/v16/Server/sqlite3/
+
+\.vs/
+
+obj/
+
+*.cache
