@@ -14,8 +14,8 @@ namespace GestionStages
         public string m_nomSuperviseur { get; set; }
         public string m_Commentaire { get; set; }
 
-        public classeStage(string p_nomStage, string p_dateDebut,
-            string p_dateFin, string p_nomSuperviseur, string p_commentaire) {
+        public classeStage( string p_nomStage, string p_dateDebut,
+            string p_dateFin, string p_nomSuperviseur, string p_commentaire ) {
 
             m_nomStage = p_nomStage;
             m_dateDebut = p_dateDebut;

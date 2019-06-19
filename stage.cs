@@ -61,16 +61,31 @@ namespace GestionStages
             else { 
                 if ( this.m_regexDate.IsMatch( txt_debut.Text ) ) {
 
-                    DateTime dateDebut = DateTime.ParseExact(txt_debut.Text, "yyyy-MM-dd", null);
-                    DateTime dateLimite = DateTime.ParseExact("1990-06-01", "yyyy-MM-dd", null);
-                    DateTime aujourdhui = DateTime.Now;
+                    bool dateValide = true;
 
-                    if ( dateDebut < dateLimite ) { // date dans le passé
-                        this.gestionnaireErreurs.SetError(this.txt_debut, "Le date doit être après le 1er juin 1990");
-                        e.Cancel = true;
+                    try {
+                        DateTime dateDebut = DateTime.ParseExact(txt_debut.Text, "yyyy-MM-dd", null);
+                        DateTime dateLimite = DateTime.ParseExact("1990-06-01", "yyyy-MM-dd", null);
+                        DateTime aujourdhui = DateTime.Now;
                     }
-                    else {
-                        this.gestionnaireErreurs.SetError(this.txt_debut, "");
+                    catch ( Exception ) {
+                        this.gestionnaireErreurs.SetError(this.txt_debut, "La date n'est pas valide");
+                        e.Cancel = true;
+                        dateValide = false;
+                    }
+                    if (dateValide) {
+
+                        DateTime dateDebut = DateTime.ParseExact(txt_debut.Text, "yyyy-MM-dd", null);
+                        DateTime dateLimite = DateTime.ParseExact("1990-06-01", "yyyy-MM-dd", null);
+                        DateTime aujourdhui = DateTime.Now;
+
+                        if (dateDebut < dateLimite) { // date dans le passé
+                            this.gestionnaireErreurs.SetError(this.txt_debut, "Le date doit être après le 1er juin 1990");
+                            e.Cancel = true;
+                        }
+                        else {
+                            this.gestionnaireErreurs.SetError(this.txt_debut, "");
+                        }
                     }
                 }
                 else { // format
@@ -89,25 +104,43 @@ namespace GestionStages
 
                 if ( this.m_regexDate.IsMatch(txt_fin.Text) ){
 
-                    DateTime dateDebut = DateTime.ParseExact(txt_debut.Text, "yyyy-MM-dd", null);
-                    DateTime dateFin = DateTime.ParseExact(txt_fin.Text, "yyyy-MM-dd", null);
-                    DateTime dateLimite = DateTime.ParseExact("1990-06-01", "yyyy-MM-dd", null);
-
-                    if (dateFin < dateDebut) { // date de fin avant le début
-                        this.gestionnaireErreurs.SetError(this.txt_fin, "Le date de fin doit être après celle de début");
-                        e.Cancel = true;
+                    bool dateValide = true;
+                    try {
+                        DateTime dateDebut = DateTime.ParseExact(txt_debut.Text, "yyyy-MM-dd", null);
+                        DateTime dateFin = DateTime.ParseExact(txt_fin.Text, "yyyy-MM-dd", null);
+                        DateTime dateLimite = DateTime.ParseExact("1990-06-01", "yyyy-MM-dd", null);
                     }
-                    else {
-                        TimeSpan duree = dateFin - dateDebut;
+                    catch (Exception ) {
+                        this.gestionnaireErreurs.SetError(this.txt_fin, "La date n'est pas valide");
+                        e.Cancel = true;
+                        dateValide = false;
+                    }
+                    if (dateValide) {
 
-                        if (duree.Days > 365) { // stage plus d'un an
-                            this.gestionnaireErreurs.SetError(this.txt_fin, "La durée d'un stage ne peut pas être plus d'un an");
+                        DateTime dateDebut = DateTime.ParseExact(txt_debut.Text, "yyyy-MM-dd", null);
+                        DateTime dateFin = DateTime.ParseExact(txt_fin.Text, "yyyy-MM-dd", null);
+                        DateTime dateLimite = DateTime.ParseExact("1990-06-01", "yyyy-MM-dd", null);
+
+                        if (dateFin < dateDebut)
+                        { // date de fin avant le début
+                            this.gestionnaireErreurs.SetError(this.txt_fin, "Le date de fin doit être après celle de début");
                             e.Cancel = true;
                         }
-                        else { // aucune erreur
-                            this.gestionnaireErreurs.SetError(this.txt_fin, "");
+                        else
+                        {
+                            TimeSpan duree = dateFin - dateDebut;
+
+                            if (duree.Days > 365)
+                            { // stage plus d'un an
+                                this.gestionnaireErreurs.SetError(this.txt_fin, "La durée d'un stage ne peut pas être plus d'un an");
+                                e.Cancel = true;
+                            }
+                            else
+                            { // aucune erreur
+                                this.gestionnaireErreurs.SetError(this.txt_fin, "");
+                            }
                         }
-                    }
+                    }                    
                 }
                 else { // format
                     this.gestionnaireErreurs.SetError(this.txt_fin, "Le format n'est pas valide");

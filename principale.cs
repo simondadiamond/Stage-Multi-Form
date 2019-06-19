@@ -45,21 +45,21 @@ namespace GestionStages
             //lst_stagiaires.Items.Add( new classeStagiaire(3, "Jacques",
             //                      "581-123-1234", "banane@banane.com", new ListBox() ));
 
-            DialogResult resultat = this.dlg_charger.ShowDialog();
+            //DialogResult resultat = this.dlg_charger.ShowDialog();
 
-            if (resultat == DialogResult.OK)
-            {
-                try
-                {
-                    Charger(this.dlg_charger.FileName);
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(
-                          exception.Message, "Erreur",
-                          MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
+            //if (resultat == DialogResult.OK)
+            //{
+            //    try
+            //    {
+            //        Charger(this.dlg_charger.FileName);
+            //    }
+            //    catch (Exception exception)
+            //    {
+            //        MessageBox.Show(
+            //              exception.Message, "Erreur",
+            //              MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    }
+            //}
             
             m_enRecherche = false;
             m_stagiairesOriginal = new ListBox();
