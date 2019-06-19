@@ -58,3 +58,15 @@ E:\S3_Prog_gestion\TP_1\Stage-Multi-Form\obj\Debug\GestionStages.csproj.Generate
 E:\S3_Prog_gestion\TP_1\Stage-Multi-Form\obj\Debug\GestionStages.csproj.CoreCompileInputs.cache
 E:\S3_Prog_gestion\TP_1\Stage-Multi-Form\obj\Debug\GestionStages.exe
 E:\S3_Prog_gestion\TP_1\Stage-Multi-Form\obj\Debug\GestionStages.pdb
+C:\Users\simon\Nextcloud\School\Prog\Stage Multi-Form\bin\Debug\GestionStages.exe.config
+C:\Users\simon\Nextcloud\School\Prog\Stage Multi-Form\bin\Debug\GestionStages.exe
+C:\Users\simon\Nextcloud\School\Prog\Stage Multi-Form\bin\Debug\GestionStages.pdb
+C:\Users\simon\Nextcloud\School\Prog\Stage Multi-Form\obj\Debug\GestionStages.csprojAssemblyReference.cache
+C:\Users\simon\Nextcloud\School\Prog\Stage Multi-Form\obj\Debug\GestionStages.principale.resources
+C:\Users\simon\Nextcloud\School\Prog\Stage Multi-Form\obj\Debug\GestionStages.Properties.Resources.resources
+C:\Users\simon\Nextcloud\School\Prog\Stage Multi-Form\obj\Debug\GestionStages.stage.resources
+C:\Users\simon\Nextcloud\School\Prog\Stage Multi-Form\obj\Debug\GestionStages.stagiaire.resources
+C:\Users\simon\Nextcloud\School\Prog\Stage Multi-Form\obj\Debug\GestionStages.csproj.GenerateResource.cache
+C:\Users\simon\Nextcloud\School\Prog\Stage Multi-Form\obj\Debug\GestionStages.csproj.CoreCompileInputs.cache
+C:\Users\simon\Nextcloud\School\Prog\Stage Multi-Form\obj\Debug\GestionStages.exe
+C:\Users\simon\Nextcloud\School\Prog\Stage Multi-Form\obj\Debug\GestionStages.pdb

@@ -1,4 +1,5 @@
-﻿using System;
+﻿// bouton recherche 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -143,32 +144,36 @@ namespace GestionStages
         }
 
         private void lst_stagiaires_SelectedIndexChanged(object sender, EventArgs e){
-
+            lst_stages.ClearSelected();
             classeStagiaire stagiaireSelectionne = (classeStagiaire)this.lst_stagiaires.SelectedItem;
+            classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
+
 
             if (stagiaireSelectionne != null) {
                                 
                 lst_stages.DataSource = creerListeStage(stagiaireSelectionne);
 
                 StringBuilder sb = new StringBuilder();
-                string infoStagiaire = "Numéro d'employé:{0} \nNom:{1} \nNuméro de téléphone:{2} \nCouriel:{3}\n";
-                string infoStage = "Titre:{0} \n    Date de début:{1} \n    Date de fin:{2} \n    Commentaires:{3}\n    Nom du superviseur:{4}";
+                string infoStagiaire = "Numéro d'employé: {0} \r\nNom: {1} \r\nTéléphone: {2} \r\nCouriel: {3}\n";
+                
 
                 sb.AppendFormat(infoStagiaire,  stagiaireSelectionne.m_id.ToString(),
                                                 stagiaireSelectionne.m_nom,
                                                 stagiaireSelectionne.m_telephone,
                                                 stagiaireSelectionne.m_courriel);
-
-                foreach (classeStage stage in stagiaireSelectionne.m_stages.Items)
-                {
-                    sb.AppendFormat(infoStage,
-                                    stage.m_nomStage,
-                                    stage.m_dateDebut,
-                                    stage.m_dateFin,
-                                    stage.m_Commentaire,
-                                    stage.m_nomSuperviseur);
-                }
                 txt_affichage.Text = sb.ToString();
+
+
+            if (stageSelectionne != null) {
+                string infoStage = "Titre:{0} \r\n    Date de début:{1} \r\n    Date de fin:{2} \r\n    Commentaires:{3}\r\n    Nom du superviseur:{4}";
+                sb.AppendFormat(infoStage,
+                                stageSelectionne.m_nomStage,
+                                stageSelectionne.m_dateDebut,
+                                stageSelectionne.m_dateFin,
+                                stageSelectionne.m_Commentaire,
+                                stageSelectionne.m_nomSuperviseur);
+            }
+            
 
             }
             //else{
@@ -177,6 +182,7 @@ namespace GestionStages
 
 
         }
+
         // Ajouter stage
         private void btn_stage_Click(object sender, EventArgs e) {
 
