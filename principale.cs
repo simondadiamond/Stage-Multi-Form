@@ -37,13 +37,29 @@ namespace GestionStages
             InitializeComponent();
             m_stageVide = lst_stages;
 
-            lst_stagiaires.Items.Add( new classeStagiaire(1, "Pierre",
-                                  "418-123-1234", "patate@patate.com", new ListBox() ));
-            lst_stagiaires.Items.Add( new classeStagiaire(2, "Jean",
-                                  "418-123-1234", "patate@patate.com", new ListBox() ));
-            lst_stagiaires.Items.Add( new classeStagiaire(3, "Jacques",
-                                  "581-123-1234", "banane@banane.com", new ListBox() ));
+            //lst_stagiaires.Items.Add( new classeStagiaire(1, "Pierre",
+            //                      "418-123-1234", "patate@patate.com", new ListBox() ));
+            //lst_stagiaires.Items.Add( new classeStagiaire(2, "Jean",
+            //                      "418-123-1234", "patate@patate.com", new ListBox() ));
+            //lst_stagiaires.Items.Add( new classeStagiaire(3, "Jacques",
+            //                      "581-123-1234", "banane@banane.com", new ListBox() ));
 
+            DialogResult resultat = this.dlg_charger.ShowDialog();
+
+            if (resultat == DialogResult.OK)
+            {
+                try
+                {
+                    Charger(this.dlg_charger.FileName);
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(
+                          exception.Message, "Erreur",
+                          MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            
             m_enRecherche = false;
             m_stagiairesOriginal = new ListBox();
         }
@@ -131,7 +147,9 @@ namespace GestionStages
             classeStagiaire stagiaireSelectionne = (classeStagiaire)this.lst_stagiaires.SelectedItem;
 
             if (stagiaireSelectionne != null) {
-                lst_stages = stagiaireSelectionne.m_stages;
+                                
+                lst_stages.DataSource = creerListeStage(stagiaireSelectionne);
+
                 StringBuilder sb = new StringBuilder();
                 string infoStagiaire = "Numéro d'employé:{0} \nNom:{1} \nNuméro de téléphone:{2} \nCouriel:{3}\n";
                 string infoStage = "Titre:{0} \n    Date de début:{1} \n    Date de fin:{2} \n    Commentaires:{3}\n    Nom du superviseur:{4}";
@@ -170,13 +188,14 @@ namespace GestionStages
                 if (stagiaireSelectionne != null)
                 {
                     classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
-
-
+                    
                     stage nouvelleFenetre = new stage(stageSelectionne);
 
                     if (nouvelleFenetre.ShowDialog() == DialogResult.OK) {
 
-                        lst_stages.Items.Add(nouvelleFenetre.m_stage);
+                        stagiaireSelectionne.m_stages.Items.Add(nouvelleFenetre.m_stage);
+                        // pour refresh la liste
+                        lst_stages.DataSource = creerListeStage(stagiaireSelectionne);
                     }
                 }
                 else {
@@ -385,6 +404,20 @@ namespace GestionStages
 
         private void btn_charger_Click(object sender, EventArgs e)
         {
+            DialogResult resultat = this.dlg_charger.ShowDialog();
+
+            if (resultat == DialogResult.OK)
+            {
+                try {
+                    Charger( this.dlg_charger.FileName );
+                }
+                catch (Exception exception) {
+                    MessageBox.Show(
+                          exception.Message, "Erreur",
+                          MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+
 
         }
         public void Charger( string p_nomFichier )
@@ -457,6 +490,16 @@ namespace GestionStages
             p_doc.Skip();
 
             return nouveau;
+        }
+        public List<classeStage> creerListeStage(classeStagiaire p_stagiaire) {
+
+            List<classeStage> nouvelleListe = new List<classeStage>();
+
+            foreach (classeStage stage in p_stagiaire.m_stages.Items) {
+                nouvelleListe.Add(stage);
+            }
+
+            return nouvelleListe;
         }
 
 
