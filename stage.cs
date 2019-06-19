@@ -121,7 +121,7 @@ namespace GestionStages
 
                 classeStage nouveau = new classeStage( txt_nom.Text, txt_debut.Text,
                                                      txt_fin.Text, txt_superviseur.Text,
-                                                     txt_commentaire.Text);
+                                                     txt_commentaire.Text );
 
                 this.m_stage = nouveau;
                 this.DialogResult = DialogResult.OK;

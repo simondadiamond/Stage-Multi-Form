@@ -37,8 +37,13 @@ namespace GestionStages
             InitializeComponent();
             m_stageVide = lst_stages;
 
-            lst_stagiaires.Items.Add( new classeStagiaire(1, "patate",
-                                  "123-123-1234", "patate@patate.com", new ListBox() ));
+            lst_stagiaires.Items.Add( new classeStagiaire(1, "Pierre",
+                                  "418-123-1234", "patate@patate.com", new ListBox() ));
+            lst_stagiaires.Items.Add( new classeStagiaire(2, "Jean",
+                                  "418-123-1234", "patate@patate.com", new ListBox() ));
+            lst_stagiaires.Items.Add( new classeStagiaire(3, "Jacques",
+                                  "581-123-1234", "banane@banane.com", new ListBox() ));
+
             m_enRecherche = false;
             m_stagiairesOriginal = new ListBox();
         }
@@ -50,11 +55,19 @@ namespace GestionStages
 
         private void btn_supprimer_Click(object sender, EventArgs e)
         {
-            classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
+            if ( lst_stages.Items.Count > 0 ) {
+                classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
 
-            if (stageSelectionne != null) {
+                if (stageSelectionne != null)
+                {
                     int index = lst_stages.SelectedIndex;
                     lst_stages.Items.RemoveAt(index);
+                }
+            }
+            else {
+                MessageBox.Show(
+                              "La liste des stages est vide", "Erreur",
+                              MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -140,24 +153,43 @@ namespace GestionStages
                 txt_affichage.Text = sb.ToString();
 
             }
-            else{
-                lst_stages = m_stageVide;
-            }
+            //else{
+            //    lst_stages = m_stageVide;
+            //}
 
 
         }
-
+        // Ajouter stage
         private void btn_stage_Click(object sender, EventArgs e) {
 
-            stage nouvelleFenetre = new stage( null );
+            // si il y a au moins 1 stagiaire
+            if ( lst_stagiaires.Items.Count > 0 ) {
 
-            if (nouvelleFenetre.ShowDialog() == DialogResult.OK) {
+                classeStagiaire stagiaireSelectionne = (classeStagiaire)this.lst_stagiaires.SelectedItem;
 
-                lst_stages.Items.Add( nouvelleFenetre.m_stage );
+                if (stagiaireSelectionne != null)
+                {
+                    classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
+
+
+                    stage nouvelleFenetre = new stage(stageSelectionne);
+
+                    if (nouvelleFenetre.ShowDialog() == DialogResult.OK) {
+
+                        lst_stages.Items.Add(nouvelleFenetre.m_stage);
+                    }
+                }
+                else {
+                    MessageBox.Show(
+                               "Aucun stagiaire de sélectionné", "Erreur",
+                               MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
-
-
-
+            else {
+                MessageBox.Show(
+                              "La liste de stagiaire est vide", "Erreur",
+                              MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void txt_recherche_TextChanged(object sender, EventArgs e)
@@ -350,6 +382,86 @@ namespace GestionStages
             // </stage>
             p_document.WriteEndElement();
         }
+
+        private void btn_charger_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void Charger( string p_nomFichier )
+        {
+            //pré-condition
+            Debug.Assert( !string.IsNullOrEmpty(p_nomFichier) );
+
+            // on vide la liste de stagiaire
+            this.lst_stagiaires.Items.Clear();
+            // on vide la liste de stage
+            this.lst_stages.Items.Clear();
+
+            XmlReader doc = XmlReader.Create( p_nomFichier );
+
+            doc.MoveToContent();
+
+            // <listeStagiaire> 
+            doc.ReadStartElement(XML_ELM_RACINE);
+
+            // Lire sans savoir si on a terminé
+            while ( doc.IsStartElement(XML_ELM_STAGIAIRE) )
+            {
+                this.lst_stagiaires.Items.Add( chargerStagiaire(doc) );
+            }
+
+            // </listeStagiaire>
+            doc.ReadEndElement();
+            doc.Close();
+
+            MessageBox.Show(
+                "L'opération c'est terminé avec succès !", "Succes",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public classeStagiaire chargerStagiaire( XmlReader p_doc )
+        {
+            // Aucun ReadStartElement()
+
+            int id = Convert.ToInt32( p_doc.GetAttribute(XML_ATTR_ID) );
+            string nom = p_doc.GetAttribute( XML_ATTR_NOM );
+            string telephone = p_doc.GetAttribute( XML_ATTR_TELEPHONE );
+            string courriel = p_doc.GetAttribute( XML_ATTR_COURRIEL );
+
+            classeStagiaire nouveau = new classeStagiaire( id, nom, telephone,
+                                                        courriel, new ListBox() );
+
+            // Lire sans savoir si on a terminé
+            while ( p_doc.IsStartElement(XML_ELM_STAGE) )
+            {
+                nouveau.m_stages.Items.Add( chargerStage(p_doc) );
+            }
+            
+            // Pour passer par-dessus </stagiaire>
+            p_doc.Skip();
+
+            return nouveau;
+        }
+        public classeStage chargerStage( XmlReader p_doc )
+        {
+            // Aucun ReadStartElement()
+            
+            string nomStage = p_doc.GetAttribute( XML_ATTR_NOMSTAGE );
+            string dateDebut = p_doc.GetAttribute( XML_ATTR_DATEDEBUT );
+            string dateFin = p_doc.GetAttribute( XML_ATTR_DATEFIN );
+            string nomSuperviseur = p_doc.GetAttribute( XML_ATTR_NOMSUPERVISEUR );
+            string commentaire = p_doc.GetAttribute( XML_ATTR_COMMENTAIRE );
+
+            classeStage nouveau = new classeStage( nomStage, dateDebut, dateFin, nomSuperviseur, commentaire );
+            
+            // Pour passer par-dessus </stage>
+            p_doc.Skip();
+
+            return nouveau;
+        }
+
+
+
+
 
 
     }

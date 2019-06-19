@@ -1,4 +1,5 @@
 
+<<<<<<< Updated upstream
 \.vs/GestionStages/v16/\.suo
 
 \.vs/GestionStages/v16/Server/sqlite3/
@@ -10,3 +11,10 @@ obj/
 *.cache
 
 bin/
+=======
+\.vs/
+
+bin/
+
+obj/
+>>>>>>> Stashed changes

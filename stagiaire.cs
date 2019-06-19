@@ -45,13 +45,11 @@ namespace GestionStages
         {
             if (this.ValidateChildren())
             {
-                if (this.Text == "Ajouter un stagiaire")
-                {
+                if (this.Text == "Ajouter un stagiaire") {
                     m_stagiaire = new classeStagiaire(Convert.ToInt32(txt_id.Text), txt_nom.Text,
                                   txt_telephone.Text, txt_courriel.Text, new ListBox() );
                 }
-                else if (this.Text == "Modifier un stagiaire")
-                {
+                else if (this.Text == "Modifier un stagiaire") {
                     m_stagiaire.m_id = Convert.ToInt32(txt_id.Text);
                     m_stagiaire.m_nom = txt_nom.Text;
                     m_stagiaire.m_telephone = txt_telephone.Text;
@@ -74,18 +72,16 @@ namespace GestionStages
                 e.Cancel = true;
                 this.gestionnaireErreurs.SetError(this.txt_id, "Votre ID doit être un nombre");
             }
-            else if ( m_regex_numero.IsMatch(txt_id.Text) ) // si la case contient un nombre
-            {
+            else if ( m_regex_numero.IsMatch(txt_id.Text) ) { // si la case contient un nombre
+
                 classeStagiaire stagiaireId = trouverStagiaireParId(txt_id.Text);
 
                 // si le numero est deja utilisé et que l'on ne le modifie pas
-                if ( stagiaireId != null && stagiaireId != m_stagiaire) 
-                {
+                if ( stagiaireId != null && stagiaireId != m_stagiaire) {
                     e.Cancel = true;
                     this.gestionnaireErreurs.SetError(this.txt_id, "Votre ID est déja utilisé");
                 }
-                else // nombre non utilise
-                {
+                else { // nombre non utilise
                     this.gestionnaireErreurs.SetError(this.txt_id, "");
                 }
             }

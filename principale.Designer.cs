@@ -106,6 +106,7 @@
             this.btn_charger.TabIndex = 0;
             this.btn_charger.Text = "&Charger";
             this.btn_charger.UseVisualStyleBackColor = true;
+            this.btn_charger.Click += new System.EventHandler(this.btn_charger_Click);
             // 
             // btn_quitter
             // 
@@ -249,7 +250,7 @@
             this.AcceptButton = this.btn_quitter;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 410);
+            this.ClientSize = new System.Drawing.Size(651, 398);
             this.Controls.Add(this.grp_affichage);
             this.Controls.Add(this.grp_gestion);
             this.Controls.Add(this.grp_stages);

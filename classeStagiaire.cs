@@ -14,6 +14,7 @@ namespace GestionStages
         public string m_telephone { get; set; }
         public string m_courriel { get; set; }
         public ListBox m_stages { get; set; }
+
         public classeStagiaire( int p_id, string p_nom,
             string p_telephone, string p_courriel, ListBox p_stages )
         {
@@ -23,6 +24,7 @@ namespace GestionStages
             m_courriel = p_courriel;
             m_stages = p_stages;
         }
+
         public override string ToString()
         {
             return  m_id.ToString() + " " + m_nom;
