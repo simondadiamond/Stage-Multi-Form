@@ -70,7 +70,7 @@ namespace GestionStages
 
         }
 
-        private void btn_supprimer_Click(object sender, EventArgs e)
+        private void btn_supprimerStage_Click(object sender, EventArgs e)
         {
             if ( lst_stages.Items.Count > 0 ) {
                 classeStagiaire stagiaireSelectionne = (classeStagiaire)this.lst_stagiaires.SelectedItem;
@@ -82,6 +82,12 @@ namespace GestionStages
                     stagiaireSelectionne.m_stages.Items.RemoveAt(index);
                     lst_stages.DataSource = creerListeStage(stagiaireSelectionne);
                     lst_stages_SelectedIndexChanged(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show(
+                                  "Veuillez selectionner un stage a supprimer", "Erreur",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             else {
@@ -176,9 +182,9 @@ namespace GestionStages
 
                 if (stagiaireSelectionne != null)
                 {
-                    classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
+                    // classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
                     
-                    stage nouvelleFenetre = new stage(stageSelectionne);
+                    stage nouvelleFenetre = new stage(null);
 
                     if (nouvelleFenetre.ShowDialog() == DialogResult.OK) {
 
@@ -202,17 +208,19 @@ namespace GestionStages
 
         private void txt_recherche_TextChanged(object sender, EventArgs e)
         {
-            Btn_recherche_Click(sender, e);
-
+            Recherche(sender, e);
+            lst_stages.DataSource = null;
+            txt_affichage.Text = "";
             if (txt_recherche.Text == "" && m_enRecherche)
             {
                 lst_stagiaires.Items.Clear();
                 lst_stagiaires.Items.AddRange(m_stagiairesOriginal.Items);
                 m_enRecherche = false;
             }
+
         }
 
-        private void Btn_recherche_Click(object sender, EventArgs e)
+        private void Recherche(object sender, EventArgs e)
         {
             if (!m_enRecherche)
             {
@@ -222,6 +230,9 @@ namespace GestionStages
                 }
                 m_stagiairesOriginal.Items.AddRange(lst_stagiaires.Items);
                 lst_stagiaires.Items.Clear();
+                lst_stages.DataSource = null;
+                txt_affichage.Text = "";
+
                 m_enRecherche = true;
             }
 
@@ -499,7 +510,7 @@ namespace GestionStages
             StringBuilder sb = new StringBuilder();
             if (stageSelectionne != null)
             {
-                string infoStage = "Titre:{0} \r\n    Date de début:{1} \r\n    Date de fin:{2} \r\n    Commentaires:{3}\r\n    Nom du superviseur:{4}";
+                string infoStage = "Titre: {0} \r\n    Date de début: {1} \r\n    Date de fin: {2} \r\n    Commentaires: {3}\r\n    Nom du superviseur: {4}";
                 sb.AppendFormat(infoStage,
                                 stageSelectionne.m_nomStage,
                                 stageSelectionne.m_dateDebut,
@@ -532,6 +543,35 @@ namespace GestionStages
                 MessageBox.Show("Veuillez SVP selectionner un stage a modifier.");
             }
 
+        }
+
+        private void Btn_supprimerStagiaire_Click(object sender, EventArgs e)
+        {
+            if (lst_stagiaires.Items.Count > 0)
+            {
+                classeStagiaire stagiaireSelectionne = (classeStagiaire)this.lst_stagiaires.SelectedItem;
+                classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
+
+                if (stagiaireSelectionne != null)
+                {
+                    int index = lst_stagiaires.SelectedIndex;
+                    lst_stagiaires.Items.RemoveAt(index);
+                    lst_stages.DataSource = null;
+                    txt_affichage.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show(
+                                  "Veuillez selectionner un stagiaire a supprimer", "Erreur",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                MessageBox.Show(
+                              "La liste des stagiaires est vide", "Erreur",
+                              MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }

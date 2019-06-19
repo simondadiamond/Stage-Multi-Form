@@ -40,8 +40,9 @@
             this.grp_stages = new System.Windows.Forms.GroupBox();
             this.lst_stages = new System.Windows.Forms.ListBox();
             this.grp_gestion = new System.Windows.Forms.GroupBox();
+            this.btn_supprimerStagiaire = new System.Windows.Forms.Button();
             this.btn_modifierStage = new System.Windows.Forms.Button();
-            this.btn_supprimer = new System.Windows.Forms.Button();
+            this.btn_supprimerStage = new System.Windows.Forms.Button();
             this.btn_stagiaire = new System.Windows.Forms.Button();
             this.btn_stage = new System.Windows.Forms.Button();
             this.btn_modifierStagiaire = new System.Windows.Forms.Button();
@@ -111,7 +112,7 @@
             // 
             // btn_quitter
             // 
-            this.btn_quitter.Location = new System.Drawing.Point(543, 355);
+            this.btn_quitter.Location = new System.Drawing.Point(495, 382);
             this.btn_quitter.Name = "btn_quitter";
             this.btn_quitter.Size = new System.Drawing.Size(96, 44);
             this.btn_quitter.TabIndex = 2;
@@ -159,21 +160,32 @@
             // 
             // grp_gestion
             // 
+            this.grp_gestion.Controls.Add(this.btn_supprimerStagiaire);
             this.grp_gestion.Controls.Add(this.btn_modifierStage);
-            this.grp_gestion.Controls.Add(this.btn_supprimer);
+            this.grp_gestion.Controls.Add(this.btn_supprimerStage);
             this.grp_gestion.Controls.Add(this.btn_stagiaire);
             this.grp_gestion.Controls.Add(this.btn_stage);
             this.grp_gestion.Controls.Add(this.btn_modifierStagiaire);
-            this.grp_gestion.Location = new System.Drawing.Point(12, 338);
+            this.grp_gestion.Location = new System.Drawing.Point(56, 338);
             this.grp_gestion.Name = "grp_gestion";
-            this.grp_gestion.Size = new System.Drawing.Size(491, 72);
+            this.grp_gestion.Size = new System.Drawing.Size(307, 119);
             this.grp_gestion.TabIndex = 5;
             this.grp_gestion.TabStop = false;
             this.grp_gestion.Text = "Gestion";
             // 
+            // btn_supprimerStagiaire
+            // 
+            this.btn_supprimerStagiaire.Location = new System.Drawing.Point(199, 21);
+            this.btn_supprimerStagiaire.Name = "btn_supprimerStagiaire";
+            this.btn_supprimerStagiaire.Size = new System.Drawing.Size(90, 40);
+            this.btn_supprimerStagiaire.TabIndex = 5;
+            this.btn_supprimerStagiaire.Text = "Supprimer un  stagiaire";
+            this.btn_supprimerStagiaire.UseVisualStyleBackColor = true;
+            this.btn_supprimerStagiaire.Click += new System.EventHandler(this.Btn_supprimerStagiaire_Click);
+            // 
             // btn_modifierStage
             // 
-            this.btn_modifierStage.Location = new System.Drawing.Point(295, 21);
+            this.btn_modifierStage.Location = new System.Drawing.Point(103, 67);
             this.btn_modifierStage.Name = "btn_modifierStage";
             this.btn_modifierStage.Size = new System.Drawing.Size(90, 40);
             this.btn_modifierStage.TabIndex = 4;
@@ -181,15 +193,15 @@
             this.btn_modifierStage.UseVisualStyleBackColor = true;
             this.btn_modifierStage.Click += new System.EventHandler(this.btn_modifierStage_Click);
             // 
-            // btn_supprimer
+            // btn_supprimerStage
             // 
-            this.btn_supprimer.Location = new System.Drawing.Point(391, 21);
-            this.btn_supprimer.Name = "btn_supprimer";
-            this.btn_supprimer.Size = new System.Drawing.Size(90, 40);
-            this.btn_supprimer.TabIndex = 3;
-            this.btn_supprimer.Text = "Supprimer un  stage";
-            this.btn_supprimer.UseVisualStyleBackColor = true;
-            this.btn_supprimer.Click += new System.EventHandler(this.btn_supprimer_Click);
+            this.btn_supprimerStage.Location = new System.Drawing.Point(199, 67);
+            this.btn_supprimerStage.Name = "btn_supprimerStage";
+            this.btn_supprimerStage.Size = new System.Drawing.Size(90, 40);
+            this.btn_supprimerStage.TabIndex = 3;
+            this.btn_supprimerStage.Text = "Supprimer un  stage";
+            this.btn_supprimerStage.UseVisualStyleBackColor = true;
+            this.btn_supprimerStage.Click += new System.EventHandler(this.btn_supprimerStage_Click);
             // 
             // btn_stagiaire
             // 
@@ -203,7 +215,7 @@
             // 
             // btn_stage
             // 
-            this.btn_stage.Location = new System.Drawing.Point(103, 21);
+            this.btn_stage.Location = new System.Drawing.Point(7, 67);
             this.btn_stage.Name = "btn_stage";
             this.btn_stage.Size = new System.Drawing.Size(90, 40);
             this.btn_stage.TabIndex = 0;
@@ -213,7 +225,7 @@
             // 
             // btn_modifierStagiaire
             // 
-            this.btn_modifierStagiaire.Location = new System.Drawing.Point(199, 21);
+            this.btn_modifierStagiaire.Location = new System.Drawing.Point(103, 21);
             this.btn_modifierStagiaire.Name = "btn_modifierStagiaire";
             this.btn_modifierStagiaire.Size = new System.Drawing.Size(90, 40);
             this.btn_modifierStagiaire.TabIndex = 2;
@@ -263,7 +275,7 @@
             this.AcceptButton = this.btn_quitter;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 414);
+            this.ClientSize = new System.Drawing.Size(643, 456);
             this.Controls.Add(this.grp_affichage);
             this.Controls.Add(this.grp_gestion);
             this.Controls.Add(this.grp_stages);
@@ -302,7 +314,7 @@
         private System.Windows.Forms.GroupBox grp_stages;
         private System.Windows.Forms.ListBox lst_stages;
         private System.Windows.Forms.GroupBox grp_gestion;
-        private System.Windows.Forms.Button btn_supprimer;
+        private System.Windows.Forms.Button btn_supprimerStage;
         private System.Windows.Forms.Button btn_modifierStagiaire;
         private System.Windows.Forms.Button btn_stagiaire;
         private System.Windows.Forms.Button btn_stage;
@@ -312,6 +324,7 @@
         private System.Windows.Forms.OpenFileDialog dlg_sauvergarder;
         private System.Windows.Forms.OpenFileDialog dlg_charger;
         private System.Windows.Forms.Button btn_modifierStage;
+        private System.Windows.Forms.Button btn_supprimerStagiaire;
     }
 }
 
