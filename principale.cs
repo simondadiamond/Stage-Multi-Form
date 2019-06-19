@@ -73,12 +73,15 @@ namespace GestionStages
         private void btn_supprimer_Click(object sender, EventArgs e)
         {
             if ( lst_stages.Items.Count > 0 ) {
+                classeStagiaire stagiaireSelectionne = (classeStagiaire)this.lst_stagiaires.SelectedItem;
                 classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
 
                 if (stageSelectionne != null)
                 {
                     int index = lst_stages.SelectedIndex;
-                    lst_stages.Items.RemoveAt(index);
+                    stagiaireSelectionne.m_stages.Items.RemoveAt(index);
+                    lst_stages.DataSource = creerListeStage(stagiaireSelectionne);
+                    lst_stages_SelectedIndexChanged(sender, e);
                 }
             }
             else {
@@ -88,10 +91,9 @@ namespace GestionStages
             }
         }
 
-        private void btn_modifier_Click(object sender, EventArgs e)
+        private void btn_modifierStagiaire_Click(object sender, EventArgs e)
         {
             classeStagiaire stagiaireSelectionne = (classeStagiaire)this.lst_stagiaires.SelectedItem;
-            classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
 
             if (stagiaireSelectionne != null)
             {
@@ -101,18 +103,11 @@ namespace GestionStages
                     int index = lst_stagiaires.SelectedIndex;
                     lst_stagiaires.Items.RemoveAt(index);
                     lst_stagiaires.Items.Insert(index, nouvelleFenetre.m_stagiaire);
+                    lst_stagiaires.SetSelected(index, true);
+                    lst_stagiaires_SelectedIndexChanged(sender, e);
                 }
             }
-            else if (stageSelectionne != null)
-            {
-                stage nouvelleFenetre = new stage(stageSelectionne);
-                if (nouvelleFenetre.ShowDialog() == DialogResult.OK)
-                {
-                    int index = lst_stages.SelectedIndex;
-                    lst_stages.Items.RemoveAt(index);
-                    lst_stages.Items.Insert(index, nouvelleFenetre.m_stage);
-                }
-            }
+
             else
             {
                 MessageBox.Show("Veuillez SVP selectionner un stagiaire ou un stage a modifier.");
@@ -441,9 +436,9 @@ namespace GestionStages
             doc.ReadEndElement();
             doc.Close();
 
-            MessageBox.Show(
-                "L'opération c'est terminé avec succès !", "Succes",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show(
+            //    "L'opération c'est terminé avec succès !", "Succes",
+            //    MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public classeStagiaire chargerStagiaire( XmlReader p_doc )
@@ -464,9 +459,6 @@ namespace GestionStages
             {
                 nouveau.m_stages.Items.Add(chargerStage(p_doc));
             }
-
-
-
 
             // Pour passer par-dessus </stagiaire>
             p_doc.Skip();
@@ -516,6 +508,30 @@ namespace GestionStages
                                 stageSelectionne.m_nomSuperviseur);
             }
             txt_affichage.Text = sb.ToString();
+        }
+
+        private void btn_modifierStage_Click(object sender, EventArgs e)
+        {
+            classeStagiaire stagiaireSelectionne = (classeStagiaire)this.lst_stagiaires.SelectedItem;
+            classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
+
+            if (stagiaireSelectionne != null && stageSelectionne !=null)
+            {
+                stage nouvelleFenetre = new stage(stageSelectionne);
+                if (nouvelleFenetre.ShowDialog() == DialogResult.OK)
+                {
+                    int index = lst_stages.SelectedIndex;
+                    stagiaireSelectionne.m_stages.Items.RemoveAt(index);
+                    stagiaireSelectionne.m_stages.Items.Insert(index, nouvelleFenetre.m_stage);
+                    lst_stages.DataSource = creerListeStage(stagiaireSelectionne);
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("Veuillez SVP selectionner un stage a modifier.");
+            }
+
         }
     }
 }
