@@ -510,7 +510,7 @@ namespace GestionStages
             StringBuilder sb = new StringBuilder();
             if (stageSelectionne != null)
             {
-                string infoStage = "Titre:{0} \r\n    Date de début:{1} \r\n    Date de fin:{2} \r\n    Commentaires:{3}\r\n    Nom du superviseur:{4}";
+                string infoStage = "Titre: {0} \r\n    Date de début: {1} \r\n    Date de fin: {2} \r\n    Commentaires: {3}\r\n    Nom du superviseur: {4}";
                 sb.AppendFormat(infoStage,
                                 stageSelectionne.m_nomStage,
                                 stageSelectionne.m_dateDebut,
