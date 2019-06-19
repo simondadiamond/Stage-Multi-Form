@@ -63,9 +63,9 @@
             // grp_rechercher
             // 
             this.grp_rechercher.Controls.Add(this.txt_recherche);
-            this.grp_rechercher.Location = new System.Drawing.Point(223, 12);
+            this.grp_rechercher.Location = new System.Drawing.Point(222, 12);
             this.grp_rechercher.Name = "grp_rechercher";
-            this.grp_rechercher.Size = new System.Drawing.Size(416, 64);
+            this.grp_rechercher.Size = new System.Drawing.Size(311, 64);
             this.grp_rechercher.TabIndex = 0;
             this.grp_rechercher.TabStop = false;
             this.grp_rechercher.Text = "Rechercher";
@@ -74,7 +74,7 @@
             // 
             this.txt_recherche.Location = new System.Drawing.Point(10, 29);
             this.txt_recherche.Name = "txt_recherche";
-            this.txt_recherche.Size = new System.Drawing.Size(399, 20);
+            this.txt_recherche.Size = new System.Drawing.Size(294, 20);
             this.txt_recherche.TabIndex = 0;
             this.txt_recherche.TextChanged += new System.EventHandler(this.txt_recherche_TextChanged);
             // 
@@ -84,7 +84,7 @@
             this.grp_gestionFichier.Controls.Add(this.btn_charger);
             this.grp_gestionFichier.Location = new System.Drawing.Point(12, 12);
             this.grp_gestionFichier.Name = "grp_gestionFichier";
-            this.grp_gestionFichier.Size = new System.Drawing.Size(202, 64);
+            this.grp_gestionFichier.Size = new System.Drawing.Size(203, 64);
             this.grp_gestionFichier.TabIndex = 1;
             this.grp_gestionFichier.TabStop = false;
             this.grp_gestionFichier.Text = "Gestion des fichiers";
@@ -92,9 +92,9 @@
             // 
             // btn_sauvegarder
             // 
-            this.btn_sauvegarder.Location = new System.Drawing.Point(111, 21);
+            this.btn_sauvegarder.Location = new System.Drawing.Point(102, 19);
             this.btn_sauvegarder.Name = "btn_sauvegarder";
-            this.btn_sauvegarder.Size = new System.Drawing.Size(85, 34);
+            this.btn_sauvegarder.Size = new System.Drawing.Size(90, 35);
             this.btn_sauvegarder.TabIndex = 1;
             this.btn_sauvegarder.Text = "&Sauvegarder";
             this.btn_sauvegarder.UseVisualStyleBackColor = true;
@@ -102,9 +102,9 @@
             // 
             // btn_charger
             // 
-            this.btn_charger.Location = new System.Drawing.Point(7, 21);
+            this.btn_charger.Location = new System.Drawing.Point(6, 19);
             this.btn_charger.Name = "btn_charger";
-            this.btn_charger.Size = new System.Drawing.Size(98, 34);
+            this.btn_charger.Size = new System.Drawing.Size(90, 35);
             this.btn_charger.TabIndex = 0;
             this.btn_charger.Text = "&Charger";
             this.btn_charger.UseVisualStyleBackColor = true;
@@ -112,9 +112,9 @@
             // 
             // btn_quitter
             // 
-            this.btn_quitter.Location = new System.Drawing.Point(495, 382);
+            this.btn_quitter.Location = new System.Drawing.Point(436, 390);
             this.btn_quitter.Name = "btn_quitter";
-            this.btn_quitter.Size = new System.Drawing.Size(96, 44);
+            this.btn_quitter.Size = new System.Drawing.Size(90, 65);
             this.btn_quitter.TabIndex = 2;
             this.btn_quitter.Text = "&Quitter";
             this.btn_quitter.UseVisualStyleBackColor = true;
@@ -123,7 +123,7 @@
             // grp_stagiaires
             // 
             this.grp_stagiaires.Controls.Add(this.lst_stagiaires);
-            this.grp_stagiaires.Location = new System.Drawing.Point(12, 95);
+            this.grp_stagiaires.Location = new System.Drawing.Point(12, 82);
             this.grp_stagiaires.Name = "grp_stagiaires";
             this.grp_stagiaires.Size = new System.Drawing.Size(203, 237);
             this.grp_stagiaires.TabIndex = 3;
@@ -142,7 +142,7 @@
             // grp_stages
             // 
             this.grp_stages.Controls.Add(this.lst_stages);
-            this.grp_stages.Location = new System.Drawing.Point(222, 95);
+            this.grp_stages.Location = new System.Drawing.Point(222, 82);
             this.grp_stages.Name = "grp_stages";
             this.grp_stages.Size = new System.Drawing.Size(202, 237);
             this.grp_stages.TabIndex = 4;
@@ -166,16 +166,16 @@
             this.grp_gestion.Controls.Add(this.btn_stagiaire);
             this.grp_gestion.Controls.Add(this.btn_stage);
             this.grp_gestion.Controls.Add(this.btn_modifierStagiaire);
-            this.grp_gestion.Location = new System.Drawing.Point(56, 338);
+            this.grp_gestion.Location = new System.Drawing.Point(430, 82);
             this.grp_gestion.Name = "grp_gestion";
-            this.grp_gestion.Size = new System.Drawing.Size(307, 119);
+            this.grp_gestion.Size = new System.Drawing.Size(103, 302);
             this.grp_gestion.TabIndex = 5;
             this.grp_gestion.TabStop = false;
             this.grp_gestion.Text = "Gestion";
             // 
             // btn_supprimerStagiaire
             // 
-            this.btn_supprimerStagiaire.Location = new System.Drawing.Point(199, 21);
+            this.btn_supprimerStagiaire.Location = new System.Drawing.Point(7, 113);
             this.btn_supprimerStagiaire.Name = "btn_supprimerStagiaire";
             this.btn_supprimerStagiaire.Size = new System.Drawing.Size(90, 40);
             this.btn_supprimerStagiaire.TabIndex = 5;
@@ -185,7 +185,7 @@
             // 
             // btn_modifierStage
             // 
-            this.btn_modifierStage.Location = new System.Drawing.Point(103, 67);
+            this.btn_modifierStage.Location = new System.Drawing.Point(7, 205);
             this.btn_modifierStage.Name = "btn_modifierStage";
             this.btn_modifierStage.Size = new System.Drawing.Size(90, 40);
             this.btn_modifierStage.TabIndex = 4;
@@ -195,7 +195,7 @@
             // 
             // btn_supprimerStage
             // 
-            this.btn_supprimerStage.Location = new System.Drawing.Point(199, 67);
+            this.btn_supprimerStage.Location = new System.Drawing.Point(7, 251);
             this.btn_supprimerStage.Name = "btn_supprimerStage";
             this.btn_supprimerStage.Size = new System.Drawing.Size(90, 40);
             this.btn_supprimerStage.TabIndex = 3;
@@ -215,7 +215,7 @@
             // 
             // btn_stage
             // 
-            this.btn_stage.Location = new System.Drawing.Point(7, 67);
+            this.btn_stage.Location = new System.Drawing.Point(7, 159);
             this.btn_stage.Name = "btn_stage";
             this.btn_stage.Size = new System.Drawing.Size(90, 40);
             this.btn_stage.TabIndex = 0;
@@ -225,7 +225,7 @@
             // 
             // btn_modifierStagiaire
             // 
-            this.btn_modifierStagiaire.Location = new System.Drawing.Point(103, 21);
+            this.btn_modifierStagiaire.Location = new System.Drawing.Point(7, 67);
             this.btn_modifierStagiaire.Name = "btn_modifierStagiaire";
             this.btn_modifierStagiaire.Size = new System.Drawing.Size(90, 40);
             this.btn_modifierStagiaire.TabIndex = 2;
@@ -236,20 +236,20 @@
             // grp_affichage
             // 
             this.grp_affichage.Controls.Add(this.txt_affichage);
-            this.grp_affichage.Location = new System.Drawing.Point(431, 95);
+            this.grp_affichage.Location = new System.Drawing.Point(12, 325);
             this.grp_affichage.Name = "grp_affichage";
-            this.grp_affichage.Size = new System.Drawing.Size(207, 237);
+            this.grp_affichage.Size = new System.Drawing.Size(412, 136);
             this.grp_affichage.TabIndex = 6;
             this.grp_affichage.TabStop = false;
             this.grp_affichage.Text = "Affichage";
             // 
             // txt_affichage
             // 
-            this.txt_affichage.Location = new System.Drawing.Point(7, 20);
+            this.txt_affichage.Location = new System.Drawing.Point(7, 19);
             this.txt_affichage.Multiline = true;
             this.txt_affichage.Name = "txt_affichage";
             this.txt_affichage.ReadOnly = true;
-            this.txt_affichage.Size = new System.Drawing.Size(194, 211);
+            this.txt_affichage.Size = new System.Drawing.Size(399, 111);
             this.txt_affichage.TabIndex = 0;
             this.txt_affichage.Text = "\r\n";
             // 
@@ -275,7 +275,7 @@
             this.AcceptButton = this.btn_quitter;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(643, 456);
+            this.ClientSize = new System.Drawing.Size(542, 468);
             this.Controls.Add(this.grp_affichage);
             this.Controls.Add(this.grp_gestion);
             this.Controls.Add(this.grp_stages);
