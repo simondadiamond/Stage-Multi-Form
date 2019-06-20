@@ -69,22 +69,37 @@ namespace GestionStages
                 e.Cancel = true;
                 this.gestionnaireErreurs.SetError(this.txt_id, "Vous devez rajouter un Identifiant");
             }
-            else if (!m_regex_numero.IsMatch(txt_id.Text)) // si la case contient autre chose que un nombre
+            else if ( !m_regex_numero.IsMatch(txt_id.Text) ) // si la case contient autre chose que un nombre
             {
                 e.Cancel = true;
                 this.gestionnaireErreurs.SetError(this.txt_id, "Votre ID doit être un nombre");
             }
             else if ( m_regex_numero.IsMatch(txt_id.Text) ) { // si la case contient un nombre
 
-                classeStagiaire stagiaireId = trouverStagiaireParId(txt_id.Text);
+                bool conversion = true;
+                try {
 
-                // si le numero est deja utilisé et que l'on ne le modifie pas
-                if ( stagiaireId != null && stagiaireId != m_stagiaire) {
-                    e.Cancel = true;
-                    this.gestionnaireErreurs.SetError(this.txt_id, "Votre ID est déja utilisé");
+                    int id = Convert.ToInt32(txt_id.Text);
                 }
-                else { // nombre non utilise
-                    this.gestionnaireErreurs.SetError(this.txt_id, "");
+                catch (Exception) {
+
+                    e.Cancel = true;
+                    this.gestionnaireErreurs.SetError(this.txt_id, "Le ID est un nombre trop grand");
+                    conversion = false;
+                }
+                if (conversion) {
+
+                    int id = Convert.ToInt32(txt_id.Text);
+                    classeStagiaire stagiaireId = trouverStagiaireParId( id );
+
+                    // si le numero est deja utilisé et que l'on ne le modifie pas alors erreur
+                    if (stagiaireId != null && stagiaireId != m_stagiaire) {
+                        e.Cancel = true;
+                        this.gestionnaireErreurs.SetError(this.txt_id, "Votre ID est déja utilisé");
+                    }
+                    else { // nombre non utilise
+                        this.gestionnaireErreurs.SetError(this.txt_id, "");
+                    }
                 }
             }
         }
@@ -101,13 +116,13 @@ namespace GestionStages
             }
             return estUtilise;
         }
-        private classeStagiaire trouverStagiaireParId(string p_id)
+        private classeStagiaire trouverStagiaireParId(int p_id)
         {
             classeStagiaire resultat = null;
 
             foreach (classeStagiaire stagiaire in m_stagiaires.Items)
             {
-                if ( Convert.ToInt32(p_id) == stagiaire.m_id )
+                if ( p_id == stagiaire.m_id )
                 {
                     resultat = stagiaire;
                 }
