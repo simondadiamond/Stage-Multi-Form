@@ -190,6 +190,8 @@
             this.Controls.Add(this.btn_annuler);
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "stage";

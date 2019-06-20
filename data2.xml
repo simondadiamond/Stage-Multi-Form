@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<listeStagiaire>
+	<stagiaire id="1" nom="Pierre" telephone="418-123-1234" courriel="patate@patate.com">
+		<stage nomStage="patatooooo" dateDebut="2019-05-25" dateFin="2019-05-26" nomSuperviseur="aaa" commentaire="" />
+		<stage nomStage="Cegep Sainte-Foy" dateDebut="2019-04-25" dateFin="2019-05-25" nomSuperviseur="André Boumso" commentaire="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel ante quis eros semper dapibus eget non mauris. Duis eu sapien ut diam ullamcorper porta. Phasellus varius dolor vehicula libero sagittis, nec rhoncus est porta. Integer ut tortor sagittis, elementum tortor sed, porttitor lectus. Maecenas facilisis dui velit, at convallis est commodo nec. In augue enim, interdum nec leo in, faucibus consectetur velit. Ut eleifend risus vulputate magna hendrerit ornare. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices pretium bibendum." />
+	</stagiaire>
+	<stagiaire id="25" nom="Jean" telephone="418-123-1234" courriel="patate@patate.com">
+		<stage nomStage="Super stage" dateDebut="2019-05-25" dateFin="2019-05-26" nomSuperviseur="2019-05-26" commentaire="" />
+	</stagiaire>
+	<stagiaire id="3" nom="Jacques" telephone="581-123-1234" courriel="banane@banane.com">
+		<stage nomStage="patate" dateDebut="2019-05-25" dateFin="2019-05-26" nomSuperviseur="" commentaire="" />
+		<stage nomStage="hhjhjhjhjhj" dateDebut="2010-06-07" dateFin="2011-06-07" nomSuperviseur="889" commentaire="lkjhgfdsfghjkl;oiujyhgtrfedcfvbgnhmjk,.l" />
+	</stagiaire>
+</listeStagiaire>

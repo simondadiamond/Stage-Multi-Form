@@ -169,6 +169,7 @@
             this.Controls.Add(this.btn_annuler);
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.grp_stagiaire);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "stagiaire";

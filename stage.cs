@@ -38,7 +38,7 @@ namespace GestionStages
                 this.txt_nom.Text = p_stage.m_nomStage;
                 this.txt_debut.Text = p_stage.m_dateDebut;
                 this.txt_fin.Text = p_stage.m_dateFin;
-                this.txt_superviseur.Text = p_stage.m_dateFin;
+                this.txt_superviseur.Text = p_stage.m_nomSuperviseur;
                 this.txt_commentaire.Text = p_stage.m_Commentaire;
             }
         }

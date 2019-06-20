@@ -485,13 +485,13 @@ namespace GestionStages
             if (stageSelectionne != null) {
 
                 string infoStage = "Titre: {0} \r\n    Date de début: {1} \r\n    " +
-                    "Date de fin: {2} \r\n    Commentaires: {3}\r\n    Nom du superviseur: {4}";
+                    "Date de fin: {2} \r\n    Nom du superviseur: {3}\r\n    Commentaire: {4}";
                 sb.AppendFormat(infoStage,
                                 stageSelectionne.m_nomStage,
                                 stageSelectionne.m_dateDebut,
                                 stageSelectionne.m_dateFin,
-                                stageSelectionne.m_Commentaire,
-                                stageSelectionne.m_nomSuperviseur);
+                                stageSelectionne.m_nomSuperviseur,
+                                stageSelectionne.m_Commentaire);
             }
             txt_affichage.Text = sb.ToString();
         }

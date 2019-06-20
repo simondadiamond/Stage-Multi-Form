@@ -272,9 +272,9 @@
             // 
             // principale
             // 
-            this.AcceptButton = this.btn_quitter;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btn_quitter;
             this.ClientSize = new System.Drawing.Size(542, 468);
             this.Controls.Add(this.grp_affichage);
             this.Controls.Add(this.grp_gestion);
@@ -283,6 +283,7 @@
             this.Controls.Add(this.btn_quitter);
             this.Controls.Add(this.grp_gestionFichier);
             this.Controls.Add(this.grp_rechercher);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "principale";
