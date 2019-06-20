@@ -65,15 +65,15 @@ namespace GestionStages
                 classeStagiaire stagiaireSelectionne = (classeStagiaire)this.lst_stagiaires.SelectedItem;
                 classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
 
-                if (stageSelectionne != null)
-                {
+                if (stageSelectionne != null) {
+
                     int index = lst_stages.SelectedIndex;
                     stagiaireSelectionne.m_stages.Items.RemoveAt(index);
+                    // updater fenetre des stages
                     lst_stages.DataSource = creerListeStage(stagiaireSelectionne);
                     lst_stages_SelectedIndexChanged(sender, e);
                 }
-                else
-                {
+                else {
                     MessageBox.Show(
                                   "Veuillez SVP selectionner un stage à supprimer", "Erreur",
                                   MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -103,21 +103,17 @@ namespace GestionStages
                     lst_stagiaires_SelectedIndexChanged(sender, e);
                 }
             }
-
             else {
                 MessageBox.Show( "Veuillez SVP selectionner un(e) stagiaire à modifier.", "Erreur",
-                              MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                  MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
-
-
         }
 
         private void btn_stagiaire_Click(object sender, EventArgs e){
 
             stagiaire nouvelleFenetre = new stagiaire( null, lst_stagiaires );
 
-            if ( nouvelleFenetre.ShowDialog() == DialogResult.OK){
+            if ( nouvelleFenetre.ShowDialog() == DialogResult.OK ){
 
                 lst_stagiaires.Items.Add( nouvelleFenetre.m_stagiaire );
             }
@@ -150,7 +146,6 @@ namespace GestionStages
                                                 stagiaireSelectionne.m_courriel);
                 lst_stages.ClearSelected();
                 txt_affichage.Text = sb.ToString();
-                
             }
             else{
                 lst_stages = m_stageVide;
@@ -166,9 +161,7 @@ namespace GestionStages
 
                 classeStagiaire stagiaireSelectionne = (classeStagiaire)this.lst_stagiaires.SelectedItem;
 
-                if (stagiaireSelectionne != null)
-                {
-                    // classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
+                if (stagiaireSelectionne != null) {
                     
                     stage nouvelleFenetre = new stage(null);
 
@@ -181,15 +174,13 @@ namespace GestionStages
                     }
                 }
                 else {
-                    MessageBox.Show(
-                               "Aucun stagiaire de sélectionné", "Erreur",
-                               MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show( "Aucun stagiaire de sélectionné", "Erreur",
+                                      MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             else {
-                MessageBox.Show(
-                              "La liste de stagiaire est vide", "Erreur",
-                              MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show( "La liste de stagiaire est vide", "Erreur",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -198,19 +189,18 @@ namespace GestionStages
             Recherche(sender, e);
             lst_stages.DataSource = null;
             txt_affichage.Text = "";
-            if (txt_recherche.Text == "" && m_enRecherche)
-            {
+            if (txt_recherche.Text == "" && m_enRecherche) {
+
                 lst_stagiaires.Items.Clear();
                 lst_stagiaires.Items.AddRange(m_stagiairesOriginal.Items);
                 m_enRecherche = false;
             }
-
         }
 
         private void Recherche(object sender, EventArgs e)
         {
-            if (!m_enRecherche)
-            {
+            if (!m_enRecherche) {
+
                 if (m_stagiairesOriginal.Items != null) {
 
                     m_stagiairesOriginal.Items.Clear();
@@ -225,25 +215,21 @@ namespace GestionStages
 
             lst_stagiaires.Items.Clear();
             bool textePresent = false;
-            foreach (classeStagiaire stagiaire in m_stagiairesOriginal.Items)
-            {
+            foreach (classeStagiaire stagiaire in m_stagiairesOriginal.Items) {
+
                 textePresent = false;
-                if (estInfoStagiaire(stagiaire))
-                {
+                if ( estInfoStagiaire(stagiaire) ) {
                     textePresent = true;
                 }
-                foreach (classeStage stage in stagiaire.m_stages.Items)
-                {
-                    if (!textePresent)
-                    {
-                        if (estInfoStage(stage))
-                        {
+                foreach (classeStage stage in stagiaire.m_stages.Items) {
+
+                    if (!textePresent) {
+                        if (estInfoStage(stage)) {
                             textePresent = true;
                         }
                     }
                 }
-                if (textePresent && !dejaTrouve(stagiaire))
-                {
+                if (textePresent && !dejaTrouve(stagiaire)) {
                     lst_stagiaires.Items.Add(stagiaire);
                 }
             }
@@ -252,12 +238,10 @@ namespace GestionStages
         private bool dejaTrouve(classeStagiaire p_stagiaire)
         {
             bool trouve = false;
-            foreach (classeStagiaire stagiaire in lst_stagiaires.Items)
-            {
-                if (!trouve)
-                {
-                    if (p_stagiaire.m_id == stagiaire.m_id)
-                    {
+            foreach (classeStagiaire stagiaire in lst_stagiaires.Items) {
+
+                if (!trouve) {
+                    if (p_stagiaire.m_id == stagiaire.m_id) {
                         trouve = true;
                     }
                 }
@@ -297,23 +281,19 @@ namespace GestionStages
         {
             DialogResult resultat = this.dlg_sauvergarder.ShowDialog();
 
-            if (resultat == DialogResult.OK)
-            {
-                try
-                {
+            if (resultat == DialogResult.OK) {
+                try {
                     Sauvegarder(this.dlg_sauvergarder.FileName);
                 }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(
-                          exception.Message, "Erreur",
-                          MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                catch (Exception exception) {
+                    MessageBox.Show( exception.Message, "Erreur",
+                                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }
         private void Sauvegarder( string p_nomFichier )
         {
-            Debug.Assert( !string.IsNullOrEmpty(p_nomFichier) );
+            Debug.Assert( !string.IsNullOrEmpty( p_nomFichier ));
             Debug.Assert( lst_stagiaires.Items != null );
 
             XmlWriterSettings settings = new XmlWriterSettings();
@@ -396,9 +376,8 @@ namespace GestionStages
                     Charger( this.dlg_charger.FileName );
                 }
                 catch (Exception exception) {
-                    MessageBox.Show(
-                          exception.Message, "Erreur",
-                          MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show( exception.Message, "Erreur",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }
@@ -411,6 +390,8 @@ namespace GestionStages
             this.lst_stagiaires.Items.Clear();
             // on vide la liste de stage
             this.lst_stages.DataSource = null;
+            // on vide la fenetre d'information
+            this.txt_affichage.Text = "";
 
             XmlReader doc = XmlReader.Create( p_nomFichier );
 
@@ -419,7 +400,7 @@ namespace GestionStages
             if (doc.IsStartElement(XML_ELM_RACINE) &&
                     doc.IsEmptyElement) {
 
-                // <listeStagiaire />
+                // <listeStagiaire>
                 doc.Skip();
                 MessageBox.Show( "Le document était vide", "",
                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -439,7 +420,7 @@ namespace GestionStages
                 doc.Close();
 
                 MessageBox.Show( "L'opération c'est terminé avec succès !", "Succès",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -528,6 +509,7 @@ namespace GestionStages
                     int index = lst_stages.SelectedIndex;
                     stagiaireSelectionne.m_stages.Items.RemoveAt(index);
                     stagiaireSelectionne.m_stages.Items.Insert(index, nouvelleFenetre.m_stage);
+                    // updater de liste des stages
                     lst_stages.DataSource = creerListeStage(stagiaireSelectionne);
                 }
             }
@@ -549,7 +531,9 @@ namespace GestionStages
                 if (stagiaireSelectionne != null) {
                     int index = lst_stagiaires.SelectedIndex;
                     lst_stagiaires.Items.RemoveAt(index);
+                    // Vide l'affichage des stages
                     lst_stages.DataSource = null;
+                    // Vide l'affichage d'information
                     txt_affichage.Text = "";
                 }
                 else {
@@ -558,8 +542,7 @@ namespace GestionStages
                 }
             }
             else {
-                MessageBox.Show(
-                              "La liste des stagiaires est vide", "Erreur",
+                MessageBox.Show( "La liste des stagiaires est vide", "Erreur",
                               MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
