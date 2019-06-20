@@ -75,7 +75,7 @@
             this.txt_recherche.Location = new System.Drawing.Point(10, 29);
             this.txt_recherche.Name = "txt_recherche";
             this.txt_recherche.Size = new System.Drawing.Size(294, 20);
-            this.txt_recherche.TabIndex = 0;
+            this.txt_recherche.TabIndex = 2;
             this.txt_recherche.TextChanged += new System.EventHandler(this.txt_recherche_TextChanged);
             // 
             // grp_gestionFichier
@@ -85,7 +85,7 @@
             this.grp_gestionFichier.Location = new System.Drawing.Point(12, 12);
             this.grp_gestionFichier.Name = "grp_gestionFichier";
             this.grp_gestionFichier.Size = new System.Drawing.Size(203, 64);
-            this.grp_gestionFichier.TabIndex = 1;
+            this.grp_gestionFichier.TabIndex = 0;
             this.grp_gestionFichier.TabStop = false;
             this.grp_gestionFichier.Text = "Gestion des fichiers";
             this.grp_gestionFichier.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -115,7 +115,7 @@
             this.btn_quitter.Location = new System.Drawing.Point(436, 390);
             this.btn_quitter.Name = "btn_quitter";
             this.btn_quitter.Size = new System.Drawing.Size(90, 65);
-            this.btn_quitter.TabIndex = 2;
+            this.btn_quitter.TabIndex = 11;
             this.btn_quitter.Text = "&Quitter";
             this.btn_quitter.UseVisualStyleBackColor = true;
             this.btn_quitter.Click += new System.EventHandler(this.btn_quitter_Click);
@@ -126,7 +126,7 @@
             this.grp_stagiaires.Location = new System.Drawing.Point(12, 82);
             this.grp_stagiaires.Name = "grp_stagiaires";
             this.grp_stagiaires.Size = new System.Drawing.Size(203, 237);
-            this.grp_stagiaires.TabIndex = 3;
+            this.grp_stagiaires.TabIndex = 0;
             this.grp_stagiaires.TabStop = false;
             this.grp_stagiaires.Text = "Stagiaires";
             // 
@@ -136,7 +136,7 @@
             this.lst_stagiaires.Location = new System.Drawing.Point(7, 20);
             this.lst_stagiaires.Name = "lst_stagiaires";
             this.lst_stagiaires.Size = new System.Drawing.Size(189, 212);
-            this.lst_stagiaires.TabIndex = 0;
+            this.lst_stagiaires.TabIndex = 3;
             this.lst_stagiaires.SelectedIndexChanged += new System.EventHandler(this.lst_stagiaires_SelectedIndexChanged);
             // 
             // grp_stages
@@ -145,7 +145,7 @@
             this.grp_stages.Location = new System.Drawing.Point(222, 82);
             this.grp_stages.Name = "grp_stages";
             this.grp_stages.Size = new System.Drawing.Size(202, 237);
-            this.grp_stages.TabIndex = 4;
+            this.grp_stages.TabIndex = 0;
             this.grp_stages.TabStop = false;
             this.grp_stages.Text = "Stages";
             // 
@@ -155,7 +155,7 @@
             this.lst_stages.Location = new System.Drawing.Point(7, 20);
             this.lst_stages.Name = "lst_stages";
             this.lst_stages.Size = new System.Drawing.Size(189, 212);
-            this.lst_stages.TabIndex = 0;
+            this.lst_stages.TabIndex = 4;
             this.lst_stages.SelectedIndexChanged += new System.EventHandler(this.lst_stages_SelectedIndexChanged);
             // 
             // grp_gestion
@@ -169,7 +169,7 @@
             this.grp_gestion.Location = new System.Drawing.Point(430, 82);
             this.grp_gestion.Name = "grp_gestion";
             this.grp_gestion.Size = new System.Drawing.Size(103, 302);
-            this.grp_gestion.TabIndex = 5;
+            this.grp_gestion.TabIndex = 0;
             this.grp_gestion.TabStop = false;
             this.grp_gestion.Text = "Gestion";
             // 
@@ -178,8 +178,8 @@
             this.btn_supprimerStagiaire.Location = new System.Drawing.Point(7, 113);
             this.btn_supprimerStagiaire.Name = "btn_supprimerStagiaire";
             this.btn_supprimerStagiaire.Size = new System.Drawing.Size(90, 40);
-            this.btn_supprimerStagiaire.TabIndex = 5;
-            this.btn_supprimerStagiaire.Text = "Supprimer un  stagiaire";
+            this.btn_supprimerStagiaire.TabIndex = 7;
+            this.btn_supprimerStagiaire.Text = "S&upprimer un  stagiaire";
             this.btn_supprimerStagiaire.UseVisualStyleBackColor = true;
             this.btn_supprimerStagiaire.Click += new System.EventHandler(this.Btn_supprimerStagiaire_Click);
             // 
@@ -188,7 +188,7 @@
             this.btn_modifierStage.Location = new System.Drawing.Point(7, 205);
             this.btn_modifierStage.Name = "btn_modifierStage";
             this.btn_modifierStage.Size = new System.Drawing.Size(90, 40);
-            this.btn_modifierStage.TabIndex = 4;
+            this.btn_modifierStage.TabIndex = 9;
             this.btn_modifierStage.Text = "&Modifier un stage";
             this.btn_modifierStage.UseVisualStyleBackColor = true;
             this.btn_modifierStage.Click += new System.EventHandler(this.btn_modifierStage_Click);
@@ -198,8 +198,8 @@
             this.btn_supprimerStage.Location = new System.Drawing.Point(7, 251);
             this.btn_supprimerStage.Name = "btn_supprimerStage";
             this.btn_supprimerStage.Size = new System.Drawing.Size(90, 40);
-            this.btn_supprimerStage.TabIndex = 3;
-            this.btn_supprimerStage.Text = "Supprimer un  stage";
+            this.btn_supprimerStage.TabIndex = 10;
+            this.btn_supprimerStage.Text = "Su&pprimer un  stage";
             this.btn_supprimerStage.UseVisualStyleBackColor = true;
             this.btn_supprimerStage.Click += new System.EventHandler(this.btn_supprimerStage_Click);
             // 
@@ -208,8 +208,8 @@
             this.btn_stagiaire.Location = new System.Drawing.Point(7, 21);
             this.btn_stagiaire.Name = "btn_stagiaire";
             this.btn_stagiaire.Size = new System.Drawing.Size(90, 40);
-            this.btn_stagiaire.TabIndex = 1;
-            this.btn_stagiaire.Text = "Ajouter un stagiaire";
+            this.btn_stagiaire.TabIndex = 5;
+            this.btn_stagiaire.Text = "&Ajouter un stagiaire";
             this.btn_stagiaire.UseVisualStyleBackColor = true;
             this.btn_stagiaire.Click += new System.EventHandler(this.btn_stagiaire_Click);
             // 
@@ -218,8 +218,8 @@
             this.btn_stage.Location = new System.Drawing.Point(7, 159);
             this.btn_stage.Name = "btn_stage";
             this.btn_stage.Size = new System.Drawing.Size(90, 40);
-            this.btn_stage.TabIndex = 0;
-            this.btn_stage.Text = "Ajouter un  stage";
+            this.btn_stage.TabIndex = 8;
+            this.btn_stage.Text = "Ajouter &un  stage";
             this.btn_stage.UseVisualStyleBackColor = true;
             this.btn_stage.Click += new System.EventHandler(this.btn_stage_Click);
             // 
@@ -228,8 +228,8 @@
             this.btn_modifierStagiaire.Location = new System.Drawing.Point(7, 67);
             this.btn_modifierStagiaire.Name = "btn_modifierStagiaire";
             this.btn_modifierStagiaire.Size = new System.Drawing.Size(90, 40);
-            this.btn_modifierStagiaire.TabIndex = 2;
-            this.btn_modifierStagiaire.Text = "Modifier Stagiaire";
+            this.btn_modifierStagiaire.TabIndex = 6;
+            this.btn_modifierStagiaire.Text = "M&odifier Stagiaire";
             this.btn_modifierStagiaire.UseVisualStyleBackColor = true;
             this.btn_modifierStagiaire.Click += new System.EventHandler(this.btn_modifierStagiaire_Click);
             // 
@@ -239,7 +239,7 @@
             this.grp_affichage.Location = new System.Drawing.Point(12, 325);
             this.grp_affichage.Name = "grp_affichage";
             this.grp_affichage.Size = new System.Drawing.Size(412, 136);
-            this.grp_affichage.TabIndex = 6;
+            this.grp_affichage.TabIndex = 0;
             this.grp_affichage.TabStop = false;
             this.grp_affichage.Text = "Affichage";
             // 
@@ -286,6 +286,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "principale";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Banque de stagiaires";
             this.Load += new System.EventHandler(this.principale_Load);
             this.grp_rechercher.ResumeLayout(false);

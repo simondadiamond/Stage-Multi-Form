@@ -1,4 +1,5 @@
-﻿// bouton recherche 
+﻿// Equipe : Simon Paris, Jean-philippe Proteau-Coulombe
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,27 +45,15 @@ namespace GestionStages
             //                      "418-123-1234", "patate@patate.com", new ListBox() ));
             //lst_stagiaires.Items.Add( new classeStagiaire(3, "Jacques",
             //                      "581-123-1234", "banane@banane.com", new ListBox() ));
-
-            //DialogResult resultat = this.dlg_charger.ShowDialog();
-
-            //if (resultat == DialogResult.OK)
-            //{
-            //    try
-            //    {
-            //        Charger(this.dlg_charger.FileName);
-            //    }
-            //    catch (Exception exception)
-            //    {
-            //        MessageBox.Show(
-            //              exception.Message, "Erreur",
-            //              MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    }
-            //}
+            
             
             m_enRecherche = false;
             m_stagiairesOriginal = new ListBox();
         }
+        private void principale_Load(object sender, EventArgs e)
+        {
 
+        }
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -86,7 +75,7 @@ namespace GestionStages
                 else
                 {
                     MessageBox.Show(
-                                  "Veuillez selectionner un stage a supprimer", "Erreur",
+                                  "Veuillez SVP selectionner un stage à supprimer", "Erreur",
                                   MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
@@ -101,11 +90,12 @@ namespace GestionStages
         {
             classeStagiaire stagiaireSelectionne = (classeStagiaire)this.lst_stagiaires.SelectedItem;
 
-            if (stagiaireSelectionne != null)
-            {
+            if (stagiaireSelectionne != null) {
+
                 stagiaire nouvelleFenetre = new stagiaire(stagiaireSelectionne, lst_stagiaires);
-                if (nouvelleFenetre.ShowDialog() == DialogResult.OK)
-                {
+
+                if (nouvelleFenetre.ShowDialog() == DialogResult.OK) {
+
                     int index = lst_stagiaires.SelectedIndex;
                     lst_stagiaires.Items.RemoveAt(index);
                     lst_stagiaires.Items.Insert(index, nouvelleFenetre.m_stagiaire);
@@ -114,9 +104,9 @@ namespace GestionStages
                 }
             }
 
-            else
-            {
-                MessageBox.Show("Veuillez SVP selectionner un stagiaire ou un stage a modifier.");
+            else {
+                MessageBox.Show( "Veuillez SVP selectionner un(e) stagiaire à modifier.", "Erreur",
+                              MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
 
@@ -128,6 +118,7 @@ namespace GestionStages
             stagiaire nouvelleFenetre = new stagiaire( null, lst_stagiaires );
 
             if ( nouvelleFenetre.ShowDialog() == DialogResult.OK){
+
                 lst_stagiaires.Items.Add( nouvelleFenetre.m_stagiaire );
             }
 
@@ -137,11 +128,6 @@ namespace GestionStages
         private void btn_quitter_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void principale_Load(object sender, EventArgs e)
-        {
-           
         }
 
         private void lst_stagiaires_SelectedIndexChanged(object sender, EventArgs e){
@@ -155,7 +141,7 @@ namespace GestionStages
                 lst_stages.DataSource = creerListeStage(stagiaireSelectionne);
 
                 StringBuilder sb = new StringBuilder();
-                string infoStagiaire = "Numéro d'employé: {0} \r\nNom: {1} \r\nTéléphone: {2} \r\nCouriel: {3}\n";
+                string infoStagiaire = "Numéro d'employé(e): {0} \r\nNom: {1} \r\nTéléphone: {2} \r\nCouriel: {3}\n";
                 
 
                 sb.AppendFormat(infoStagiaire,  stagiaireSelectionne.m_id.ToString(),
@@ -189,6 +175,7 @@ namespace GestionStages
                     if (nouvelleFenetre.ShowDialog() == DialogResult.OK) {
 
                         stagiaireSelectionne.m_stages.Items.Add(nouvelleFenetre.m_stage);
+
                         // pour refresh la liste
                         lst_stages.DataSource = creerListeStage(stagiaireSelectionne);
                     }
@@ -224,8 +211,8 @@ namespace GestionStages
         {
             if (!m_enRecherche)
             {
-                if (m_stagiairesOriginal.Items != null)
-                {
+                if (m_stagiairesOriginal.Items != null) {
+
                     m_stagiairesOriginal.Items.Clear();
                 }
                 m_stagiairesOriginal.Items.AddRange(lst_stagiaires.Items);
@@ -308,25 +295,20 @@ namespace GestionStages
 
         private void btn_sauvegarder_Click(object sender, EventArgs e)
         {
-            if ( this.lst_stagiaires.Items.Count > 0 ) { // si au moins 1 stagiaire
-                DialogResult resultat = this.dlg_sauvergarder.ShowDialog();
+            DialogResult resultat = this.dlg_sauvergarder.ShowDialog();
 
-                if ( resultat == DialogResult.OK ) {
-                    try {
-                        Sauvegarder(this.dlg_sauvergarder.FileName);
-                    }
-                    catch (Exception exception)
-                    {
-                        MessageBox.Show(
-                              exception.Message, "Erreur",
-                              MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
+            if (resultat == DialogResult.OK)
+            {
+                try
+                {
+                    Sauvegarder(this.dlg_sauvergarder.FileName);
                 }
-            }
-            else {
-                MessageBox.Show(
-                    "Aucun stagiaire à sauvegarder", "Erreur",
-                    MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                catch (Exception exception)
+                {
+                    MessageBox.Show(
+                          exception.Message, "Erreur",
+                          MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
         }
         private void Sauvegarder( string p_nomFichier )
@@ -345,12 +327,14 @@ namespace GestionStages
             fichier.WriteStartElement(XML_ELM_RACINE);
 
 
-            foreach ( classeStagiaire stagiaire in lst_stagiaires.Items )
-            {
-                // <stagiaire>
-                SauvegarderStagiaire(fichier, stagiaire);
-                // </stagiaire>
-            }
+            if (lst_stagiaires.Items.Count > 0) { // si au moins 1 stagiaire
+                foreach (classeStagiaire stagiaire in lst_stagiaires.Items)
+                {
+                    // <stagiaire>
+                    SauvegarderStagiaire(fichier, stagiaire);
+                    // </stagiaire>
+                }
+            } 
 
             // </listeStagiaire>
             fichier.WriteEndElement();
@@ -359,7 +343,7 @@ namespace GestionStages
             fichier.Close();
 
             MessageBox.Show(
-                "L'opération c'est terminé avec succès !", "Succes",
+                "L'opération c'est terminée avec succès !", "Succès",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void SauvegarderStagiaire( XmlWriter p_document, classeStagiaire p_stagiaire )
@@ -377,7 +361,7 @@ namespace GestionStages
 
             foreach ( classeStage stage in p_stagiaire.m_stages.Items ) {
                 // <stage>
-                SauvegarderStage(p_document, stage);
+                SauvegarderStage( p_document, stage );
                 // </stage>
             }
 
@@ -417,8 +401,6 @@ namespace GestionStages
                           MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-
-
         }
         public void Charger( string p_nomFichier )
         {
@@ -428,28 +410,37 @@ namespace GestionStages
             // on vide la liste de stagiaire
             this.lst_stagiaires.Items.Clear();
             // on vide la liste de stage
-            this.lst_stages.Items.Clear();
+            this.lst_stages.DataSource = null;
 
             XmlReader doc = XmlReader.Create( p_nomFichier );
 
             doc.MoveToContent();
+            
+            if (doc.IsStartElement(XML_ELM_RACINE) &&
+                    doc.IsEmptyElement) {
 
-            // <listeStagiaire> 
-            doc.ReadStartElement(XML_ELM_RACINE);
-
-            // Lire sans savoir si on a terminé
-            while ( doc.IsStartElement(XML_ELM_STAGIAIRE) )
-            {
-                this.lst_stagiaires.Items.Add( chargerStagiaire(doc) );
+                // <listeStagiaire />
+                doc.Skip();
+                MessageBox.Show( "Le document était vide", "",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else {
+                // <listeStagiaire> 
+                doc.ReadStartElement(XML_ELM_RACINE);
 
-            // </listeStagiaire>
-            doc.ReadEndElement();
-            doc.Close();
+                // Lire sans savoir si on a terminé
+                while ( doc.IsStartElement(XML_ELM_STAGIAIRE) ) {
 
-            //MessageBox.Show(
-            //    "L'opération c'est terminé avec succès !", "Succes",
-            //    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.lst_stagiaires.Items.Add(chargerStagiaire(doc));
+                }
+
+                // </listeStagiaire>
+                doc.ReadEndElement();
+                doc.Close();
+
+                MessageBox.Show( "L'opération c'est terminé avec succès !", "Succès",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public classeStagiaire chargerStagiaire( XmlReader p_doc )
@@ -463,7 +454,8 @@ namespace GestionStages
 
             classeStagiaire nouveau = new classeStagiaire( id, nom, telephone,
                                                            courriel, new ListBox() );
-            p_doc.ReadToDescendant("stage"); // La ligne manquante... en gros je crois que cetais parce que cetais a la première ligne ''ID`` et non stage qui etais la derniere....
+
+            p_doc.ReadToDescendant("stage");
 
             //Lire sans savoir si on a terminé
             while (p_doc.IsStartElement(XML_ELM_STAGE))
@@ -498,6 +490,7 @@ namespace GestionStages
             List<classeStage> nouvelleListe = new List<classeStage>();
 
             foreach (classeStage stage in p_stagiaire.m_stages.Items) {
+
                 nouvelleListe.Add(stage);
             }
 
@@ -508,9 +501,10 @@ namespace GestionStages
         {
             classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
             StringBuilder sb = new StringBuilder();
-            if (stageSelectionne != null)
-            {
-                string infoStage = "Titre: {0} \r\n    Date de début: {1} \r\n    Date de fin: {2} \r\n    Commentaires: {3}\r\n    Nom du superviseur: {4}";
+            if (stageSelectionne != null) {
+
+                string infoStage = "Titre: {0} \r\n    Date de début: {1} \r\n    " +
+                    "Date de fin: {2} \r\n    Commentaires: {3}\r\n    Nom du superviseur: {4}";
                 sb.AppendFormat(infoStage,
                                 stageSelectionne.m_nomStage,
                                 stageSelectionne.m_dateDebut,
@@ -526,11 +520,11 @@ namespace GestionStages
             classeStagiaire stagiaireSelectionne = (classeStagiaire)this.lst_stagiaires.SelectedItem;
             classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
 
-            if (stagiaireSelectionne != null && stageSelectionne !=null)
-            {
+            if (stagiaireSelectionne != null && stageSelectionne !=null) {
+
                 stage nouvelleFenetre = new stage(stageSelectionne);
-                if (nouvelleFenetre.ShowDialog() == DialogResult.OK)
-                {
+                if (nouvelleFenetre.ShowDialog() == DialogResult.OK) {
+
                     int index = lst_stages.SelectedIndex;
                     stagiaireSelectionne.m_stages.Items.RemoveAt(index);
                     stagiaireSelectionne.m_stages.Items.Insert(index, nouvelleFenetre.m_stage);
@@ -538,36 +532,32 @@ namespace GestionStages
                 }
             }
 
-            else
-            {
-                MessageBox.Show("Veuillez SVP selectionner un stage a modifier.");
+            else {
+                MessageBox.Show( "Veuillez SVP selectionner un stage à modifier.", "Erreur",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
             }
 
         }
 
         private void Btn_supprimerStagiaire_Click(object sender, EventArgs e)
         {
-            if (lst_stagiaires.Items.Count > 0)
-            {
+            if (lst_stagiaires.Items.Count > 0) {
+
                 classeStagiaire stagiaireSelectionne = (classeStagiaire)this.lst_stagiaires.SelectedItem;
                 classeStage stageSelectionne = (classeStage)this.lst_stages.SelectedItem;
 
-                if (stagiaireSelectionne != null)
-                {
+                if (stagiaireSelectionne != null) {
                     int index = lst_stagiaires.SelectedIndex;
                     lst_stagiaires.Items.RemoveAt(index);
                     lst_stages.DataSource = null;
                     txt_affichage.Text = "";
                 }
-                else
-                {
-                    MessageBox.Show(
-                                  "Veuillez selectionner un stagiaire a supprimer", "Erreur",
-                                  MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else {
+                    MessageBox.Show( "Veuillez selectionner un stagiaire a supprimer", "Erreur",
+                                   MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            else
-            {
+            else {
                 MessageBox.Show(
                               "La liste des stagiaires est vide", "Erreur",
                               MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

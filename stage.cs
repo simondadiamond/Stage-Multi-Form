@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Equipe : Simon Paris, Jean-philippe Proteau-Coulombe
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -65,8 +67,6 @@ namespace GestionStages
 
                     try {
                         DateTime dateDebut = DateTime.ParseExact(txt_debut.Text, "yyyy-MM-dd", null);
-                        DateTime dateLimite = DateTime.ParseExact("1990-06-01", "yyyy-MM-dd", null);
-                        DateTime aujourdhui = DateTime.Now;
                     }
                     catch ( Exception ) {
                         this.gestionnaireErreurs.SetError(this.txt_debut, "La date n'est pas valide");
@@ -106,37 +106,34 @@ namespace GestionStages
 
                     bool dateValide = true;
                     try {
-                        DateTime dateDebut = DateTime.ParseExact(txt_debut.Text, "yyyy-MM-dd", null);
                         DateTime dateFin = DateTime.ParseExact(txt_fin.Text, "yyyy-MM-dd", null);
-                        DateTime dateLimite = DateTime.ParseExact("1990-06-01", "yyyy-MM-dd", null);
                     }
-                    catch (Exception ) {
+                    catch ( Exception ) {
                         this.gestionnaireErreurs.SetError(this.txt_fin, "La date n'est pas valide");
                         e.Cancel = true;
                         dateValide = false;
                     }
-                    if (dateValide) {
+                    if ( dateValide ) {
 
                         DateTime dateDebut = DateTime.ParseExact(txt_debut.Text, "yyyy-MM-dd", null);
                         DateTime dateFin = DateTime.ParseExact(txt_fin.Text, "yyyy-MM-dd", null);
                         DateTime dateLimite = DateTime.ParseExact("1990-06-01", "yyyy-MM-dd", null);
 
-                        if (dateFin < dateDebut)
-                        { // date de fin avant le début
+                        if (dateFin < dateDebut) { // date de fin avant celle du début
+
                             this.gestionnaireErreurs.SetError(this.txt_fin, "Le date de fin doit être après celle de début");
                             e.Cancel = true;
                         }
-                        else
-                        {
+                        else {
                             TimeSpan duree = dateFin - dateDebut;
 
-                            if (duree.Days > 365)
-                            { // stage plus d'un an
+                            if (duree.Days > 365) { // stage plus d'un an
+
                                 this.gestionnaireErreurs.SetError(this.txt_fin, "La durée d'un stage ne peut pas être plus d'un an");
                                 e.Cancel = true;
                             }
-                            else
-                            { // aucune erreur
+                            else { // aucune erreur
+
                                 this.gestionnaireErreurs.SetError(this.txt_fin, "");
                             }
                         }
