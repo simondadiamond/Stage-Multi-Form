@@ -374,19 +374,29 @@ namespace GestionStages
 
         private void btn_charger_Click(object sender, EventArgs e)
         {
-            DialogResult resultat = this.dlg_charger.ShowDialog();
+            DialogResult confirmation = MessageBox.Show("Êtes-vous sûr de vouloir charger ?\n" +
+                                   "Les informations non-sauvegardées seront perdues.", "Confirmation",
+                                   MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
 
-            if (resultat == DialogResult.OK)
-            {
-                try {
-                    Charger( this.dlg_charger.FileName );
-                }
-                catch (Exception exception) {
-                    MessageBox.Show( exception.Message, "Erreur",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            if (confirmation == DialogResult.OK) {
+
+                DialogResult resultat = this.dlg_charger.ShowDialog();
+
+                if (resultat == DialogResult.OK) {
+                    
+                    try {
+
+                        Charger(this.dlg_charger.FileName);
+                    }
+                    catch (Exception exception) {
+
+                        MessageBox.Show(exception.Message, "Erreur",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
             }
         }
+        
         public void Charger( string p_nomFichier )
         {
             //pré-condition

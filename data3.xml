@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<listeStagiaire>
+	<stagiaire id="14" nom="Andre B" telephone="123-456-7890" courriel="andre.b">
+		<stage nomStage="infographie" dateDebut="2019-03-04" dateFin="2019-12-20" nomSuperviseur="Lysane" commentaire="" />
+	</stagiaire>
+</listeStagiaire>
