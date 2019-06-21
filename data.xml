@@ -7,7 +7,5 @@
 	<stagiaire id="25" nom="Jean" telephone="418-123-1234" courriel="patate@patate.com">
 		<stage nomStage="Super stage" dateDebut="2019-05-25" dateFin="2019-05-26" nomSuperviseur="2019-05-26" commentaire="" />
 	</stagiaire>
-	<stagiaire id="3" nom="Jacques" telephone="581-123-1234" courriel="banane@banane.com">
-		<stage nomStage="patate" dateDebut="2019-05-25" dateFin="2019-05-26" nomSuperviseur="" commentaire="" />
-	</stagiaire>
+	<stagiaire id="3" nom="Jacques" telephone="581-123-1234" courriel="banane@banane.com" />
 </listeStagiaire>
