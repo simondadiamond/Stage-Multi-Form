@@ -73,7 +73,7 @@
             // lbl_courriel
             // 
             this.lbl_courriel.AutoSize = true;
-            this.lbl_courriel.Location = new System.Drawing.Point(58, 128);
+            this.lbl_courriel.Location = new System.Drawing.Point(65, 128);
             this.lbl_courriel.Name = "lbl_courriel";
             this.lbl_courriel.Size = new System.Drawing.Size(48, 13);
             this.lbl_courriel.TabIndex = 6;
@@ -93,9 +93,9 @@
             this.lbl_telephone.AutoSize = true;
             this.lbl_telephone.Location = new System.Drawing.Point(6, 84);
             this.lbl_telephone.Name = "lbl_telephone";
-            this.lbl_telephone.Size = new System.Drawing.Size(101, 26);
+            this.lbl_telephone.Size = new System.Drawing.Size(107, 26);
             this.lbl_telephone.TabIndex = 4;
-            this.lbl_telephone.Text = "Téléphone :\r\n(format xxx-xxx-xxxx)";
+            this.lbl_telephone.Text = "Téléphone :\r\n( format xxx-xxx-xxxx )";
             this.lbl_telephone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txt_nom
@@ -109,7 +109,7 @@
             // lbl_nom
             // 
             this.lbl_nom.AutoSize = true;
-            this.lbl_nom.Location = new System.Drawing.Point(72, 56);
+            this.lbl_nom.Location = new System.Drawing.Point(78, 56);
             this.lbl_nom.Name = "lbl_nom";
             this.lbl_nom.Size = new System.Drawing.Size(35, 13);
             this.lbl_nom.TabIndex = 2;
@@ -127,7 +127,7 @@
             // lbl_id
             // 
             this.lbl_id.AutoSize = true;
-            this.lbl_id.Location = new System.Drawing.Point(41, 23);
+            this.lbl_id.Location = new System.Drawing.Point(47, 23);
             this.lbl_id.Name = "lbl_id";
             this.lbl_id.Size = new System.Drawing.Size(66, 13);
             this.lbl_id.TabIndex = 0;
