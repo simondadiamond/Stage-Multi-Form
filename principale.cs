@@ -123,8 +123,6 @@ namespace GestionStages
 
                 lst_stagiaires.Items.Add( nouvelleFenetre.m_stagiaire );
             }
-
-
         }
 
         private void btn_quitter_Click(object sender, EventArgs e)
@@ -487,7 +485,6 @@ namespace GestionStages
 
                 nouvelleListe.Add(stage);
             }
-
             return nouvelleListe;
         }
 
