@@ -286,6 +286,14 @@ namespace GestionStages
             DialogResult resultat = this.dlg_sauvergarder.ShowDialog();
 
             if (resultat == DialogResult.OK) {
+
+                // repopulation de liste original
+                lst_stagiaires.Items.Clear();
+                lst_stagiaires.Items.AddRange(m_stagiairesOriginal.Items);
+                // vider champ recherche
+                m_enRecherche = false;
+                txt_recherche.Clear();
+
                 try {
                     Sauvegarder(this.dlg_sauvergarder.FileName);
                 }
@@ -372,11 +380,23 @@ namespace GestionStages
 
         private void btn_charger_Click(object sender, EventArgs e)
         {
-            DialogResult confirmation = MessageBox.Show("Êtes-vous sûr de vouloir charger ?\n" +
+            DialogResult confirmation = DialogResult.OK;
+
+            // si on a au moins 1 stagiaire, demander confirmation
+            if (lst_stagiaires.Items.Count > 0) {
+                confirmation = MessageBox.Show("Êtes-vous sûr de vouloir charger ?\n" +
                                    "Les informations non-sauvegardées seront perdues.", "Confirmation",
                                    MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            }
 
             if (confirmation == DialogResult.OK) {
+
+                // repopulation de liste original
+                lst_stagiaires.Items.Clear();
+                lst_stagiaires.Items.AddRange(m_stagiairesOriginal.Items);
+                // vider champ recherche
+                m_enRecherche = false;
+                txt_recherche.Clear();
 
                 DialogResult resultat = this.dlg_charger.ShowDialog();
 
